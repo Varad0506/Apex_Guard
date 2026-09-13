@@ -1,0 +1,106 @@
+{
+  "track_id": "synth_balanced_01",
+  "straight_length_distribution_m": [
+    350,
+    480,
+    600
+  ],
+  "drs_zone_count": 2,
+  "avg_braking_zone_m": 132,
+  "corner_density": 0.44,
+  "energy_recovery_factor": 0.57,
+  "overtake_difficulty": 0.5,
+  "lap_length_m": 5300,
+  "sectors": [
+    {
+      "kind": "STRAIGHT",
+      "length_m": 282.0,
+      "has_drs": true
+    },
+    {
+      "kind": "BRAKING_ZONE",
+      "length_m": 139.4,
+      "has_drs": false
+    },
+    {
+      "kind": "CORNER",
+      "length_m": 220.8,
+      "has_drs": false
+    },
+    {
+      "kind": "STRAIGHT",
+      "length_m": 485.6,
+      "has_drs": true
+    },
+    {
+      "kind": "BRAKING_ZONE",
+      "length_m": 149.2,
+      "has_drs": false
+    },
+    {
+      "kind": "CORNER",
+      "length_m": 246.2,
+      "has_drs": false
+    },
+    {
+      "kind": "STRAIGHT",
+      "length_m": 623.9,
+      "has_drs": false
+    },
+    {
+      "kind": "BRAKING_ZONE",
+      "length_m": 146.7,
+      "has_drs": false
+    },
+    {
+      "kind": "CORNER",
+      "length_m": 274.6,
+      "has_drs": false
+    },
+    {
+      "kind": "STRAIGHT",
+      "length_m": 762.1,
+      "has_drs": false
+    },
+    {
+      "kind": "BRAKING_ZONE",
+      "length_m": 125.3,
+      "has_drs": false
+    },
+    {
+      "kind": "CORNER",
+      "length_m": 179.1,
+      "has_drs": false
+    },
+    {
+      "kind": "STRAIGHT",
+      "length_m": 595.1,
+      "has_drs": false
+    },
+    {
+      "kind": "BRAKING_ZONE",
+      "length_m": 111.6,
+      "has_drs": false
+    },
+    {
+      "kind": "CORNER",
+      "length_m": 231.3,
+      "has_drs": false
+    },
+    {
+      "kind": "STRAIGHT",
+      "length_m": 290.8,
+      "has_drs": false
+    },
+    {
+      "kind": "BRAKING_ZONE",
+      "length_m": 102.0,
+      "has_drs": false
+    },
+    {
+      "kind": "CORNER",
+      "length_m": 200.9,
+      "has_drs": false
+    }
+  ]
+}

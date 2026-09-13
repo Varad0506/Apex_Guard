@@ -1,0 +1,24 @@
+fastapi>=0.111
+uvicorn[standard]>=0.30
+pydantic>=2.7
+pydantic-settings>=2.3
+pytest>=8.2
+httpx>=0.27
+scikit-learn>=1.4
+pandas>=2.2
+numpy>=1.26
+joblib>=1.4
+
+# Phase 4 (PPO) -- optional. Only needed to run scripts/train_ppo.py or to
+# load a trained app/data/artifacts/ppo_policy.zip at runtime. Everything
+# else in this project works without these installed; policy_adapter.py
+# degrades gracefully if they're missing.
+gymnasium>=0.29
+stable-baselines3[extra]>=2.3
+
+# Optional: enables real FastF1 session/lap replay endpoints and scripts.
+# Install with: pip install fastf1
+fastf1>=3.6
+
+# Experimental quantum amplitude-estimation research endpoint.
+qiskit>=2.3

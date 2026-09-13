@@ -1,0 +1,39 @@
+{
+  "request_id": "scenario-low-soc-guard",
+  "timestamp_ms": 1778050000000,
+  "telemetry_age_ms": 25,
+  "ego": {
+    "soc_pct": 19,
+    "speed_kph": 279,
+    "throttle_pct": 95,
+    "brake_pct": 0,
+    "tyre_grip_estimate": 0.7,
+    "laps_remaining": 6,
+    "current_mode": "HOLD"
+  },
+  "target": {
+    "gap_s": 0.5,
+    "relative_speed_kph": 14,
+    "stint_age_laps": 10,
+    "recent_sector_delta_s": -0.1
+  },
+  "traffic": {
+    "rear_gap_s": 1.2,
+    "cars_within_3s": 2,
+    "post_pass_traffic_gap_s": 1.5
+  },
+  "track": {
+    "track_id": "demo_high_speed_01",
+    "segment_type": "DRS_STRAIGHT",
+    "drs_available": true,
+    "straight_remaining_m": 500,
+    "braking_zone_m": 140,
+    "overtake_difficulty": 0.55
+  },
+  "rules": {
+    "deployment_budget_remaining_kj": 900,
+    "minimum_reserve_soc_pct": 15,
+    "full_deploy_allowed": true
+  },
+  "decision_mode": "VERIFIED"
+}

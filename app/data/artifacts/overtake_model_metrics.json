@@ -1,0 +1,56 @@
+{
+  "calibrated_train_tracks": {
+    "split": "train_tracks",
+    "n": 1560,
+    "accuracy": 0.7449,
+    "auc": 0.7646,
+    "log_loss": 0.5298,
+    "brier_score": 0.1765
+  },
+  "calibrated_holdout_tracks": {
+    "split": "holdout_tracks",
+    "n": 520,
+    "accuracy": 0.7827,
+    "auc": 0.7706,
+    "log_loss": 0.4495,
+    "brier_score": 0.1452
+  },
+  "baseline_uncalibrated_holdout_tracks": {
+    "split": "holdout_tracks_baseline",
+    "n": 520,
+    "accuracy": 0.7231,
+    "auc": 0.7703,
+    "log_loss": 0.5346,
+    "brier_score": 0.1808
+  },
+  "feature_columns": [
+    "target_gap_s",
+    "relative_speed_kph",
+    "drs_available",
+    "straight_remaining_m",
+    "braking_zone_m",
+    "track_overtake_difficulty",
+    "ego_tyre_grip_estimate",
+    "target_tyre_grip_estimate",
+    "target_tyre_uncertainty",
+    "laps_remaining",
+    "rear_gap_s",
+    "rear_drs_risk",
+    "cars_within_3s",
+    "post_pass_traffic_gap_s",
+    "recent_sector_delta_s",
+    "action_energy_level"
+  ],
+  "train_tracks": [
+    "hist_bahrain_like",
+    "hist_monza_like",
+    "hist_silverstone_like",
+    "hist_singapore_like",
+    "hist_spa_like",
+    "hist_suzuka_like"
+  ],
+  "holdout_tracks": [
+    "holdout_jeddah_like",
+    "holdout_monaco_like"
+  ]
+}

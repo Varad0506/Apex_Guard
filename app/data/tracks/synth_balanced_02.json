@@ -1,0 +1,116 @@
+{
+  "track_id": "synth_balanced_02",
+  "straight_length_distribution_m": [
+    320,
+    460,
+    590
+  ],
+  "drs_zone_count": 2,
+  "avg_braking_zone_m": 138,
+  "corner_density": 0.46,
+  "energy_recovery_factor": 0.54,
+  "overtake_difficulty": 0.53,
+  "lap_length_m": 5250,
+  "sectors": [
+    {
+      "kind": "STRAIGHT",
+      "length_m": 554.8,
+      "has_drs": true
+    },
+    {
+      "kind": "BRAKING_ZONE",
+      "length_m": 142.2,
+      "has_drs": false
+    },
+    {
+      "kind": "CORNER",
+      "length_m": 261.9,
+      "has_drs": false
+    },
+    {
+      "kind": "STRAIGHT",
+      "length_m": 289.3,
+      "has_drs": true
+    },
+    {
+      "kind": "BRAKING_ZONE",
+      "length_m": 136.4,
+      "has_drs": false
+    },
+    {
+      "kind": "CORNER",
+      "length_m": 241.9,
+      "has_drs": false
+    },
+    {
+      "kind": "STRAIGHT",
+      "length_m": 406.2,
+      "has_drs": false
+    },
+    {
+      "kind": "BRAKING_ZONE",
+      "length_m": 138.0,
+      "has_drs": false
+    },
+    {
+      "kind": "CORNER",
+      "length_m": 207.5,
+      "has_drs": false
+    },
+    {
+      "kind": "STRAIGHT",
+      "length_m": 341.9,
+      "has_drs": false
+    },
+    {
+      "kind": "BRAKING_ZONE",
+      "length_m": 134.2,
+      "has_drs": false
+    },
+    {
+      "kind": "CORNER",
+      "length_m": 237.2,
+      "has_drs": false
+    },
+    {
+      "kind": "STRAIGHT",
+      "length_m": 488.2,
+      "has_drs": false
+    },
+    {
+      "kind": "BRAKING_ZONE",
+      "length_m": 147.2,
+      "has_drs": false
+    },
+    {
+      "kind": "CORNER",
+      "length_m": 199.5,
+      "has_drs": false
+    },
+    {
+      "kind": "STRAIGHT",
+      "length_m": 529.4,
+      "has_drs": false
+    },
+    {
+      "kind": "BRAKING_ZONE",
+      "length_m": 139.2,
+      "has_drs": false
+    },
+    {
+      "kind": "CORNER",
+      "length_m": 174.0,
+      "has_drs": false
+    },
+    {
+      "kind": "STRAIGHT",
+      "length_m": 192.4,
+      "has_drs": false
+    },
+    {
+      "kind": "BRAKING_ZONE",
+      "length_m": 141.7,
+      "has_drs": false
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+[
+  {
+    "mode": "FAST",
+    "scenario": "isolated_pass",
+    "recommended_action": "PARTIAL_DEPLOY",
+    "confidence": 0.85,
+    "pass_probability": 0.749,
+    "counterattack_risk": 0.355,
+    "mean_latency_ms": 4.13,
+    "p95_latency_ms": 5.06,
+    "fallback_used": true
+  },
+  {
+    "mode": "FAST",
+    "scenario": "low_soc_guard",
+    "recommended_action": "HOLD",
+    "confidence": 0.762,
+    "pass_probability": 0.531,
+    "counterattack_risk": 0.415,
+    "mean_latency_ms": 3.61,
+    "p95_latency_ms": 3.81,
+    "fallback_used": true
+  },
+  {
+    "mode": "FAST",
+    "scenario": "rear_drs_threat",
+    "recommended_action": "PARTIAL_DEPLOY",
+    "confidence": 0.718,
+    "pass_probability": 0.421,
+    "counterattack_risk": 0.791,
+    "mean_latency_ms": 3.67,
+    "p95_latency_ms": 3.79,
+    "fallback_used": true
+  },
+  {
+    "mode": "VERIFIED",
+    "scenario": "isolated_pass",
+    "recommended_action": "PARTIAL_DEPLOY",
+    "confidence": 1.0,
+    "pass_probability": 1.0,
+    "counterattack_risk": 0.355,
+    "mean_latency_ms": 12.4,
+    "p95_latency_ms": 12.73,
+    "fallback_used": true
+  },
+  {
+    "mode": "VERIFIED",
+    "scenario": "low_soc_guard",
+    "recommended_action": "HARVEST",
+    "confidence": 1.0,
+    "pass_probability": 0.0,
+    "counterattack_risk": 0.415,
+    "mean_latency_ms": 9.02,
+    "p95_latency_ms": 9.45,
+    "fallback_used": true
+  },
+  {
+    "mode": "VERIFIED",
+    "scenario": "rear_drs_threat",
+    "recommended_action": "PARTIAL_DEPLOY",
+    "confidence": 1.0,
+    "pass_probability": 1.0,
+    "counterattack_risk": 0.791,
+    "mean_latency_ms": 11.79,
+    "p95_latency_ms": 12.22,
+    "fallback_used": true
+  }
+]

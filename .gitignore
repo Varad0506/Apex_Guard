@@ -1,0 +1,12 @@
+# Runtime-generated data -- should never be shipped/committed. This file
+# grows unbounded (append-only audit trail) and was accidentally included
+# in the last few builds, bloating the zip from ~3MB to ~20MB with no
+# benefit to whoever unzips it fresh.
+app/data/artifacts/audit_log.jsonl
+
+__pycache__/
+*.pyc
+.pytest_cache/
+.ipynb_checkpoints/
+*.egg-info/
+.env

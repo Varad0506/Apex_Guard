@@ -1,0 +1,24 @@
+{
+  "category_results": {
+    "simple_isolated_pass": {
+      "baseline_mse": 0.00312014929427856,
+      "gnn_mse": 0.003345505657809086
+    },
+    "rear_drs_threat": {
+      "baseline_mse": 0.0065754465701765505,
+      "gnn_mse": 0.004450836992498756
+    },
+    "drs_train": {
+      "baseline_mse": 0.005958591421853752,
+      "gnn_mse": 0.004151055624659331
+    },
+    "multiple_close_rivals": {
+      "baseline_mse": 0.01059746197617175,
+      "gnn_mse": 0.004530987839270072
+    }
+  },
+  "overall_baseline_mse": 0.006562912315620153,
+  "overall_gnn_mse": 0.004119596528559311,
+  "category_wins": 3,
+  "kept_gnn": true
+}

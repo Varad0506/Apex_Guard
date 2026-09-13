@@ -1,0 +1,39 @@
+{
+  "request_id": "scenario-rear-drs-threat",
+  "timestamp_ms": 1778050000000,
+  "telemetry_age_ms": 40,
+  "ego": {
+    "soc_pct": 46,
+    "speed_kph": 286,
+    "throttle_pct": 98,
+    "brake_pct": 0,
+    "tyre_grip_estimate": 0.78,
+    "laps_remaining": 10,
+    "current_mode": "HOLD"
+  },
+  "target": {
+    "gap_s": 0.55,
+    "relative_speed_kph": 12,
+    "stint_age_laps": 14,
+    "recent_sector_delta_s": -0.18
+  },
+  "traffic": {
+    "rear_gap_s": 0.40,
+    "cars_within_3s": 4,
+    "post_pass_traffic_gap_s": 0.90
+  },
+  "track": {
+    "track_id": "demo_high_speed_01",
+    "segment_type": "DRS_STRAIGHT",
+    "drs_available": true,
+    "straight_remaining_m": 590,
+    "braking_zone_m": 135,
+    "overtake_difficulty": 0.65
+  },
+  "rules": {
+    "deployment_budget_remaining_kj": 1800,
+    "minimum_reserve_soc_pct": 15,
+    "full_deploy_allowed": true
+  },
+  "decision_mode": "VERIFIED"
+}

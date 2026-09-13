@@ -1,0 +1,1591 @@
+{
+  "n": 2000,
+  "illegal_proposal_rate": 0.0415,
+  "divergence_rate_among_legal": 0.10328638497652583,
+  "divergences": [
+    {
+      "request_id": "stress-6",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 47%, projected SOC 28%). This outperforms a partial deployment (-0.531 vs -0.061 net value).",
+      "counterattack_risk": 0.365,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-8",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 100%, projected SOC 24%). This outperforms a partial deployment (-0.497 vs -0.025 net value).",
+      "counterattack_risk": 0.155,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-18",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.17 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-21",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 73%, projected SOC 23%). This outperforms a partial deployment (-0.502 vs -0.024 net value).",
+      "counterattack_risk": 0.171,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-30",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 0%, projected SOC 26%). This outperforms a partial deployment (-0.619 vs -0.071 net value).",
+      "counterattack_risk": 0.475,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-46",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 97%, projected SOC 26%). This outperforms a partial deployment (-0.474 vs -0.007 net value).",
+      "counterattack_risk": 0.035,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-62",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.14 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-83",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.19 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-103",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 53%, projected SOC 27%). This outperforms a partial deployment (-0.549 vs -0.069 net value).",
+      "counterattack_risk": 0.509,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-109",
+      "ppo_proposed": "FULL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 100%, projected SOC 46%). This outperforms a full deployment (-0.577 vs -0.084 net value).",
+      "counterattack_risk": 0.356,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-123",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.19 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-143",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.17 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-147",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.17 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-153",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 97%, projected SOC 25%). This outperforms a partial deployment (-0.554 vs -0.077 net value).",
+      "counterattack_risk": 0.448,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-166",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.18 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-170",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.20 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-183",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 100%, projected SOC 25%). This outperforms a partial deployment (-0.545 vs -0.059 net value).",
+      "counterattack_risk": 0.39,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-226",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 10%, projected SOC 31%). This outperforms a partial deployment (-0.512 vs -0.020 net value).",
+      "counterattack_risk": 0.138,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-241",
+      "ppo_proposed": "FULL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 83%, projected SOC 44%). This outperforms a full deployment (-0.532 vs -0.084 net value).",
+      "counterattack_risk": 0.314,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-242",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 0%, projected SOC 24%). This outperforms a partial deployment (-0.556 vs -0.052 net value).",
+      "counterattack_risk": 0.348,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-256",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 33%, projected SOC 25%). This outperforms a partial deployment (-0.519 vs -0.068 net value).",
+      "counterattack_risk": 0.365,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-258",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.17 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-263",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 73%, projected SOC 24%). This outperforms a partial deployment (-0.531 vs -0.076 net value).",
+      "counterattack_risk": 0.368,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-264",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 20%, projected SOC 28%). This outperforms a partial deployment (-0.568 vs -0.087 net value).",
+      "counterattack_risk": 0.597,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-266",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.13 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-272",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.16 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-276",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 0%, projected SOC 27%). This outperforms a partial deployment (-0.542 vs -0.052 net value).",
+      "counterattack_risk": 0.349,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-277",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 10%, projected SOC 31%). This outperforms a partial deployment (-0.621 vs -0.141 net value).",
+      "counterattack_risk": 0.549,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-287",
+      "ppo_proposed": "FULL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 80%, projected SOC 46%). This outperforms a full deployment (-0.572 vs -0.098 net value).",
+      "counterattack_risk": 0.395,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-292",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 97%, projected SOC 27%). This outperforms a partial deployment (-0.489 vs -0.034 net value).",
+      "counterattack_risk": 0.134,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-296",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 0%, projected SOC 27%). This outperforms a partial deployment (-0.563 vs -0.076 net value).",
+      "counterattack_risk": 0.504,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-312",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.18 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-316",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.18 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-318",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 23%, projected SOC 25%). This outperforms a partial deployment (-0.522 vs -0.033 net value).",
+      "counterattack_risk": 0.242,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-322",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 33%, projected SOC 27%). This outperforms a partial deployment (-0.539 vs -0.068 net value).",
+      "counterattack_risk": 0.364,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-325",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 77%, projected SOC 31%). This outperforms a partial deployment (-0.560 vs -0.079 net value).",
+      "counterattack_risk": 0.451,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-330",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 100%, projected SOC 29%). This outperforms a partial deployment (-0.561 vs -0.095 net value).",
+      "counterattack_risk": 0.504,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-336",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 0%, projected SOC 27%). This outperforms a partial deployment (-0.534 vs -0.046 net value).",
+      "counterattack_risk": 0.31,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-352",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: no candidate met safety and value thresholds",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-370",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 37%, projected SOC 28%). This outperforms a partial deployment (-0.493 vs -0.044 net value).",
+      "counterattack_risk": 0.115,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-371",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 63%, projected SOC 28%). This outperforms a partial deployment (-0.552 vs -0.052 net value).",
+      "counterattack_risk": 0.286,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-415",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.18 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-420",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 90%, projected SOC 31%). This outperforms a partial deployment (-0.535 vs -0.012 net value).",
+      "counterattack_risk": 0.13,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-426",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 33%, projected SOC 24%). This outperforms a partial deployment (-0.547 vs -0.062 net value).",
+      "counterattack_risk": 0.445,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-429",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 3%, projected SOC 27%). This outperforms a partial deployment (-0.555 vs -0.071 net value).",
+      "counterattack_risk": 0.478,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-430",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 97%, projected SOC 26%). This outperforms a partial deployment (-0.604 vs -0.122 net value).",
+      "counterattack_risk": 0.701,
+      "risk_level": "HIGH"
+    },
+    {
+      "request_id": "stress-436",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.13 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-443",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 7%, projected SOC 21%). This outperforms a partial deployment (-0.547 vs -0.053 net value).",
+      "counterattack_risk": 0.362,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-464",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.13 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-481",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 0%, projected SOC 34%). This outperforms a partial deployment (-0.625 vs -0.085 net value).",
+      "counterattack_risk": 0.567,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-502",
+      "ppo_proposed": "FULL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 27%, projected SOC 45%). This outperforms a full deployment (-0.563 vs -0.111 net value).",
+      "counterattack_risk": 0.618,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-509",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 40%, projected SOC 30%). This outperforms a partial deployment (-0.497 vs -0.066 net value).",
+      "counterattack_risk": 0.177,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-519",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 10%, projected SOC 25%). This outperforms a partial deployment (-0.516 vs -0.072 net value).",
+      "counterattack_risk": 0.089,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-543",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 43%, projected SOC 22%). This outperforms a partial deployment (-0.508 vs -0.054 net value).",
+      "counterattack_risk": 0.216,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-551",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 97%, projected SOC 29%). This outperforms a partial deployment (-0.564 vs -0.062 net value).",
+      "counterattack_risk": 0.468,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-552",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.12 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-559",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.15 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-565",
+      "ppo_proposed": "FULL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 100%, projected SOC 48%). This outperforms a full deployment (-0.492 vs -0.056 net value).",
+      "counterattack_risk": 0.257,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-581",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.18 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-597",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 0%, projected SOC 29%). This outperforms a partial deployment (-0.632 vs -0.053 net value).",
+      "counterattack_risk": 0.355,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-611",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 100%, projected SOC 22%). This outperforms a partial deployment (-0.517 vs -0.074 net value).",
+      "counterattack_risk": 0.315,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-627",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 3%, projected SOC 28%). This outperforms a partial deployment (-0.575 vs -0.062 net value).",
+      "counterattack_risk": 0.416,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-661",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.16 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-687",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.11 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-692",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 100%, projected SOC 22%). This outperforms a partial deployment (-0.572 vs -0.100 net value).",
+      "counterattack_risk": 0.534,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-714",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 97%, projected SOC 27%). This outperforms a partial deployment (-0.507 vs -0.045 net value).",
+      "counterattack_risk": 0.235,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-729",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.08 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-732",
+      "ppo_proposed": "FULL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 100%, projected SOC 46%). This outperforms a full deployment (-0.524 vs -0.055 net value).",
+      "counterattack_risk": 0.293,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-734",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 100%, projected SOC 28%). This outperforms a partial deployment (-0.510 vs -0.037 net value).",
+      "counterattack_risk": 0.211,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-737",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 3%, projected SOC 29%). This outperforms a partial deployment (-0.590 vs -0.064 net value).",
+      "counterattack_risk": 0.433,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-743",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 7%, projected SOC 25%). This outperforms a partial deployment (-0.588 vs -0.088 net value).",
+      "counterattack_risk": 0.593,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-747",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 10%, projected SOC 28%). This outperforms a partial deployment (-0.526 vs -0.114 net value).",
+      "counterattack_risk": 0.368,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-750",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.17 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-754",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 3%, projected SOC 27%). This outperforms a partial deployment (-0.503 vs -0.018 net value).",
+      "counterattack_risk": 0.12,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-756",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.17 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-762",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.10 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-784",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: no candidate met safety and value thresholds",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-787",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 0%, projected SOC 23%). This outperforms a partial deployment (-0.615 vs -0.086 net value).",
+      "counterattack_risk": 0.576,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-797",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.17 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-814",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 0%, projected SOC 28%). This outperforms a partial deployment (-0.581 vs -0.053 net value).",
+      "counterattack_risk": 0.355,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-827",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.19 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-843",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 3%, projected SOC 31%). This outperforms a partial deployment (-0.594 vs -0.065 net value).",
+      "counterattack_risk": 0.437,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-867",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 90%, projected SOC 28%). This outperforms a partial deployment (-0.519 vs -0.039 net value).",
+      "counterattack_risk": 0.182,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-876",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.18 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-880",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.14 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-907",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 27%, projected SOC 25%). This outperforms a partial deployment (-0.592 vs -0.091 net value).",
+      "counterattack_risk": 0.633,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-913",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.13 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-917",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 100%, projected SOC 28%). This outperforms a partial deployment (-0.540 vs -0.053 net value).",
+      "counterattack_risk": 0.232,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-933",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.14 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-943",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.17 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-984",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 17%, projected SOC 21%). This outperforms a partial deployment (-0.568 vs -0.101 net value).",
+      "counterattack_risk": 0.447,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-996",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.20 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1007",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 53%, projected SOC 31%). This outperforms a partial deployment (-0.529 vs -0.091 net value).",
+      "counterattack_risk": 0.434,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-1009",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.16 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1010",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.19 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1017",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 33%, projected SOC 29%). This outperforms a partial deployment (-0.518 vs -0.042 net value).",
+      "counterattack_risk": 0.188,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1022",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.15 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1023",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 70%, projected SOC 25%). This outperforms a partial deployment (-0.538 vs -0.063 net value).",
+      "counterattack_risk": 0.379,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-1031",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 13%, projected SOC 32%). This outperforms a partial deployment (-0.557 vs -0.104 net value).",
+      "counterattack_risk": 0.406,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-1038",
+      "ppo_proposed": "FULL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 67%, projected SOC 51%). This outperforms a full deployment (-0.602 vs -0.122 net value).",
+      "counterattack_risk": 0.647,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-1039",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 100%, projected SOC 27%). This outperforms a partial deployment (-0.570 vs -0.090 net value).",
+      "counterattack_risk": 0.44,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-1042",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 97%, projected SOC 30%). This outperforms a partial deployment (-0.498 vs -0.037 net value).",
+      "counterattack_risk": 0.142,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1069",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.13 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1074",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 0%, projected SOC 24%). This outperforms a partial deployment (-0.540 vs -0.048 net value).",
+      "counterattack_risk": 0.322,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1087",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.09 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1088",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 0%, projected SOC 28%). This outperforms a partial deployment (-0.581 vs -0.043 net value).",
+      "counterattack_risk": 0.29,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1089",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.17 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1101",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 20%, projected SOC 24%). This outperforms a partial deployment (-0.535 vs -0.046 net value).",
+      "counterattack_risk": 0.328,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1104",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 100%, projected SOC 33%). This outperforms a partial deployment (-0.591 vs -0.128 net value).",
+      "counterattack_risk": 0.633,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-1107",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.12 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1114",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 43%, projected SOC 27%). This outperforms a partial deployment (-0.511 vs -0.023 net value).",
+      "counterattack_risk": 0.195,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1119",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 43%, projected SOC 28%). This outperforms a partial deployment (-0.566 vs -0.072 net value).",
+      "counterattack_risk": 0.52,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-1126",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 27%, projected SOC 30%). This outperforms a partial deployment (-0.555 vs -0.054 net value).",
+      "counterattack_risk": 0.238,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1132",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 37%, projected SOC 27%). This outperforms a partial deployment (-0.549 vs -0.050 net value).",
+      "counterattack_risk": 0.367,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-1135",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.18 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1203",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 90%, projected SOC 24%). This outperforms a partial deployment (-0.482 vs -0.026 net value).",
+      "counterattack_risk": 0.091,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1204",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 27%, projected SOC 34%). This outperforms a partial deployment (-0.488 vs -0.042 net value).",
+      "counterattack_risk": 0.155,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1215",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 100%, projected SOC 26%). This outperforms a partial deployment (-0.496 vs -0.006 net value).",
+      "counterattack_risk": 0.075,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1218",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 53%, projected SOC 26%). This outperforms a partial deployment (-0.531 vs -0.053 net value).",
+      "counterattack_risk": 0.335,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-1223",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.17 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1228",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 100%, projected SOC 30%). This outperforms a partial deployment (-0.552 vs -0.102 net value).",
+      "counterattack_risk": 0.509,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-1234",
+      "ppo_proposed": "FULL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 97%, projected SOC 38%). This outperforms a full deployment (-0.512 vs -0.049 net value).",
+      "counterattack_risk": 0.322,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1264",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.19 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1268",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 100%, projected SOC 30%). This outperforms a partial deployment (-0.540 vs -0.026 net value).",
+      "counterattack_risk": 0.235,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1303",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 100%, projected SOC 27%). This outperforms a partial deployment (-0.580 vs -0.079 net value).",
+      "counterattack_risk": 0.395,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-1304",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.16 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1312",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 23%, projected SOC 32%). This outperforms a partial deployment (-0.565 vs -0.065 net value).",
+      "counterattack_risk": 0.451,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-1322",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 0%, projected SOC 23%). This outperforms a partial deployment (-0.573 vs -0.085 net value).",
+      "counterattack_risk": 0.564,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-1329",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.14 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1346",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 0%, projected SOC 27%). This outperforms a partial deployment (-0.540 vs -0.061 net value).",
+      "counterattack_risk": 0.406,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-1350",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 100%, projected SOC 29%). This outperforms a partial deployment (-0.523 vs -0.059 net value).",
+      "counterattack_risk": 0.418,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-1351",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.11 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1354",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 13%, projected SOC 23%). This outperforms a partial deployment (-0.606 vs -0.103 net value).",
+      "counterattack_risk": 0.397,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-1360",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 93%, projected SOC 29%). This outperforms a partial deployment (-0.532 vs -0.051 net value).",
+      "counterattack_risk": 0.352,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-1381",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.18 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1397",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 23%, projected SOC 25%). This outperforms a partial deployment (-0.494 vs -0.019 net value).",
+      "counterattack_risk": 0.155,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1401",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.18 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1404",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 97%, projected SOC 27%). This outperforms a partial deployment (-0.524 vs -0.039 net value).",
+      "counterattack_risk": 0.238,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1426",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 87%, projected SOC 25%). This outperforms a partial deployment (-0.545 vs -0.090 net value).",
+      "counterattack_risk": 0.321,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1431",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 97%, projected SOC 29%). This outperforms a partial deployment (-0.533 vs -0.050 net value).",
+      "counterattack_risk": 0.224,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1434",
+      "ppo_proposed": "FULL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 70%, projected SOC 43%). This outperforms a full deployment (-0.552 vs -0.117 net value).",
+      "counterattack_risk": 0.635,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-1440",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 0%, projected SOC 29%). This outperforms a partial deployment (-0.591 vs -0.046 net value).",
+      "counterattack_risk": 0.308,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1442",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 0%, projected SOC 24%). This outperforms a partial deployment (-0.615 vs -0.073 net value).",
+      "counterattack_risk": 0.487,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-1453",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 33%, projected SOC 21%). This outperforms a partial deployment (-0.603 vs -0.100 net value).",
+      "counterattack_risk": 0.343,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-1455",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 20%, projected SOC 23%). This outperforms a partial deployment (-0.575 vs -0.092 net value).",
+      "counterattack_risk": 0.43,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-1479",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 100%, projected SOC 25%). This outperforms a partial deployment (-0.494 vs -0.027 net value).",
+      "counterattack_risk": 0.129,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1502",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 0%, projected SOC 31%). This outperforms a partial deployment (-0.600 vs -0.047 net value).",
+      "counterattack_risk": 0.312,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1514",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.14 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1519",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 0%, projected SOC 25%). This outperforms a partial deployment (-0.557 vs -0.053 net value).",
+      "counterattack_risk": 0.355,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-1523",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 100%, projected SOC 29%). This outperforms a partial deployment (-0.531 vs -0.077 net value).",
+      "counterattack_risk": 0.275,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1530",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.15 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1531",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.19 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1544",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: no candidate met safety and value thresholds",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1548",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 10%, projected SOC 30%). This outperforms a partial deployment (-0.580 vs -0.087 net value).",
+      "counterattack_risk": 0.591,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-1550",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 20%, projected SOC 27%). This outperforms a partial deployment (-0.520 vs -0.055 net value).",
+      "counterattack_risk": 0.188,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1558",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 100%, projected SOC 24%). This outperforms a partial deployment (-0.496 vs -0.049 net value).",
+      "counterattack_risk": 0.195,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1560",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.20 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1565",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 13%, projected SOC 30%). This outperforms a partial deployment (-0.559 vs -0.078 net value).",
+      "counterattack_risk": 0.535,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-1567",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 37%, projected SOC 30%). This outperforms a partial deployment (-0.500 vs -0.043 net value).",
+      "counterattack_risk": 0.213,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1587",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.16 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1594",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.20 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1600",
+      "ppo_proposed": "FULL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 100%, projected SOC 47%). This outperforms a full deployment (-0.550 vs -0.093 net value).",
+      "counterattack_risk": 0.505,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-1637",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 30%, projected SOC 29%). This outperforms a partial deployment (-0.520 vs -0.040 net value).",
+      "counterattack_risk": 0.159,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1670",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.17 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1686",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.12 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1694",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 93%, projected SOC 34%). This outperforms a partial deployment (-0.538 vs -0.079 net value).",
+      "counterattack_risk": 0.483,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-1702",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 93%, projected SOC 30%). This outperforms a partial deployment (-0.542 vs -0.058 net value).",
+      "counterattack_risk": 0.308,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1704",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.19 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1716",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.17 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1721",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 53%, projected SOC 23%). This outperforms a partial deployment (-0.535 vs -0.035 net value).",
+      "counterattack_risk": 0.284,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1727",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 0%, projected SOC 33%). This outperforms a partial deployment (-0.547 vs -0.046 net value).",
+      "counterattack_risk": 0.309,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1733",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 0%, projected SOC 26%). This outperforms a partial deployment (-0.567 vs -0.071 net value).",
+      "counterattack_risk": 0.475,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-1734",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.19 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1741",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 17%, projected SOC 26%). This outperforms a partial deployment (-0.553 vs -0.054 net value).",
+      "counterattack_risk": 0.376,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-1745",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.19 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1748",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.11 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1756",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.17 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1758",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 80%, projected SOC 27%). This outperforms a partial deployment (-0.547 vs -0.059 net value).",
+      "counterattack_risk": 0.408,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-1761",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 83%, projected SOC 23%). This outperforms a partial deployment (-0.501 vs -0.036 net value).",
+      "counterattack_risk": 0.142,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1772",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.16 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1775",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.19 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1778",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.12 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1790",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.15 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1796",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.08 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1816",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 40%, projected SOC 34%). This outperforms a partial deployment (-0.511 vs -0.052 net value).",
+      "counterattack_risk": 0.188,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1817",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 47%, projected SOC 30%). This outperforms a partial deployment (-0.524 vs -0.041 net value).",
+      "counterattack_risk": 0.23,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1818",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 30%, projected SOC 24%). This outperforms a partial deployment (-0.574 vs -0.078 net value).",
+      "counterattack_risk": 0.549,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-1831",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.19 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1860",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 53%, projected SOC 27%). This outperforms a partial deployment (-0.551 vs -0.083 net value).",
+      "counterattack_risk": 0.458,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-1862",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 90%, projected SOC 28%). This outperforms a partial deployment (-0.551 vs -0.102 net value).",
+      "counterattack_risk": 0.504,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-1894",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.16 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1897",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.17 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1905",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.15 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1911",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 93%, projected SOC 28%). This outperforms a partial deployment (-0.575 vs -0.131 net value).",
+      "counterattack_risk": 0.547,
+      "risk_level": "MEDIUM"
+    },
+    {
+      "request_id": "stress-1918",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.12 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1930",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.16 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1981",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Holding position without deploying maximizes expected net race-time value (pass probability 80%, projected SOC 26%). This outperforms a partial deployment (-0.484 vs -0.030 net value).",
+      "counterattack_risk": 0.09,
+      "risk_level": "LOW"
+    },
+    {
+      "request_id": "stress-1984",
+      "ppo_proposed": "PARTIAL_DEPLOY",
+      "verifier_selected": "HOLD",
+      "explanation": "Safe hold: No credible overtake opportunity (score=0.13 < 0.2)",
+      "counterattack_risk": 0.0,
+      "risk_level": "LOW"
+    }
+  ]
+}

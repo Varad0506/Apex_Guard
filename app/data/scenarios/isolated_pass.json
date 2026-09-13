@@ -1,0 +1,39 @@
+{
+  "request_id": "scenario-isolated-pass",
+  "timestamp_ms": 1778050000000,
+  "telemetry_age_ms": 30,
+  "ego": {
+    "soc_pct": 62,
+    "speed_kph": 288,
+    "throttle_pct": 98,
+    "brake_pct": 0,
+    "tyre_grip_estimate": 0.82,
+    "laps_remaining": 12,
+    "current_mode": "HOLD"
+  },
+  "target": {
+    "gap_s": 0.45,
+    "relative_speed_kph": 16,
+    "stint_age_laps": 20,
+    "recent_sector_delta_s": -0.25
+  },
+  "traffic": {
+    "rear_gap_s": 2.4,
+    "cars_within_3s": 1,
+    "post_pass_traffic_gap_s": 2.1
+  },
+  "track": {
+    "track_id": "demo_high_speed_01",
+    "segment_type": "DRS_STRAIGHT",
+    "drs_available": true,
+    "straight_remaining_m": 620,
+    "braking_zone_m": 130,
+    "overtake_difficulty": 0.4
+  },
+  "rules": {
+    "deployment_budget_remaining_kj": 1900,
+    "minimum_reserve_soc_pct": 15,
+    "full_deploy_allowed": true
+  },
+  "decision_mode": "VERIFIED"
+}

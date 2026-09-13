@@ -1,0 +1,119 @@
+{
+  "provider": "OpenF1",
+  "runs": [
+    {
+      "id": "2025_Monaco_Race_VER_NOR_openf1",
+      "replay": "C:\\Users\\Admin\\Downloads\\apexguard_final_backend_lstm_openf1\\app\\data\\replays\\2025_Monaco_Race_VER_NOR_openf1.json",
+      "backtest": "C:\\Users\\Admin\\Downloads\\apexguard_final_backend_lstm_openf1\\app\\data\\evaluations\\backtests\\2025_Monaco_Race_VER_NOR_openf1_backtest.json",
+      "metrics": {
+        "rule_compliance_pct": 100.0,
+        "aggressive_action_rate_pct": 14.44,
+        "fallback_rate_pct": 81.11,
+        "high_trap_aggressive_rate_pct": 0.0,
+        "mean_overtake_probability_pct": 21.71,
+        "mean_decision_confidence_pct": 77.44,
+        "mean_counter_harvest_trap_pct": 20.9,
+        "mean_gap_s": 1.501,
+        "mean_latency_ms": 90.03,
+        "cold_start_latency_ms": 12457.76,
+        "steady_state_mean_latency_ms": 20.94,
+        "steady_state_p95_latency_ms": 53.12
+      }
+    },
+    {
+      "id": "2025_Monza_Race_VER_LEC_openf1",
+      "replay": "C:\\Users\\Admin\\Downloads\\apexguard_final_backend_lstm_openf1\\app\\data\\replays\\2025_Monza_Race_VER_LEC_openf1.json",
+      "backtest": "C:\\Users\\Admin\\Downloads\\apexguard_final_backend_lstm_openf1\\app\\data\\evaluations\\backtests\\2025_Monza_Race_VER_LEC_openf1_backtest.json",
+      "metrics": {
+        "rule_compliance_pct": 100.0,
+        "aggressive_action_rate_pct": 0.0,
+        "fallback_rate_pct": 75.0,
+        "high_trap_aggressive_rate_pct": 0.0,
+        "mean_overtake_probability_pct": 11.34,
+        "mean_decision_confidence_pct": 93.29,
+        "mean_counter_harvest_trap_pct": 1.99,
+        "mean_gap_s": 1.25,
+        "mean_latency_ms": 7.17,
+        "cold_start_latency_ms": 1.14,
+        "steady_state_mean_latency_ms": 7.21,
+        "steady_state_p95_latency_ms": 22.25
+      }
+    },
+    {
+      "id": "2025_Silverstone_Race_NOR_VER_openf1",
+      "replay": "C:\\Users\\Admin\\Downloads\\apexguard_final_backend_lstm_openf1\\app\\data\\replays\\2025_Silverstone_Race_NOR_VER_openf1.json",
+      "backtest": "C:\\Users\\Admin\\Downloads\\apexguard_final_backend_lstm_openf1\\app\\data\\evaluations\\backtests\\2025_Silverstone_Race_NOR_VER_openf1_backtest.json",
+      "metrics": {
+        "rule_compliance_pct": 100.0,
+        "aggressive_action_rate_pct": 3.33,
+        "fallback_rate_pct": 70.0,
+        "high_trap_aggressive_rate_pct": 0.0,
+        "mean_overtake_probability_pct": 20.53,
+        "mean_decision_confidence_pct": 82.97,
+        "mean_counter_harvest_trap_pct": 15.36,
+        "mean_gap_s": 1.077,
+        "mean_latency_ms": 15.95,
+        "cold_start_latency_ms": 25.65,
+        "steady_state_mean_latency_ms": 15.89,
+        "steady_state_p95_latency_ms": 37.44
+      }
+    },
+    {
+      "id": "2025_Austria_Race_VER_NOR_openf1",
+      "replay": "C:\\Users\\Admin\\Downloads\\apexguard_final_backend_lstm_openf1\\app\\data\\replays\\2025_Austria_Race_VER_NOR_openf1.json",
+      "backtest": "C:\\Users\\Admin\\Downloads\\apexguard_final_backend_lstm_openf1\\app\\data\\evaluations\\backtests\\2025_Austria_Race_VER_NOR_openf1_backtest.json",
+      "metrics": {
+        "rule_compliance_pct": 100.0,
+        "aggressive_action_rate_pct": 0.56,
+        "fallback_rate_pct": 97.22,
+        "high_trap_aggressive_rate_pct": 0.0,
+        "mean_overtake_probability_pct": 2.39,
+        "mean_decision_confidence_pct": 74.95,
+        "mean_counter_harvest_trap_pct": 36.23,
+        "mean_gap_s": 0.615,
+        "mean_latency_ms": 16.19,
+        "cold_start_latency_ms": 0.05,
+        "steady_state_mean_latency_ms": 16.28,
+        "steady_state_p95_latency_ms": 50.14
+      }
+    },
+    {
+      "id": "2025_Spa_Race_VER_LEC_openf1",
+      "replay": "C:\\Users\\Admin\\Downloads\\apexguard_final_backend_lstm_openf1\\app\\data\\replays\\2025_Spa_Race_VER_LEC_openf1.json",
+      "backtest": "C:\\Users\\Admin\\Downloads\\apexguard_final_backend_lstm_openf1\\app\\data\\evaluations\\backtests\\2025_Spa_Race_VER_LEC_openf1_backtest.json",
+      "metrics": {
+        "rule_compliance_pct": 100.0,
+        "aggressive_action_rate_pct": 0.0,
+        "fallback_rate_pct": 92.22,
+        "high_trap_aggressive_rate_pct": 0.0,
+        "mean_overtake_probability_pct": 2.76,
+        "mean_decision_confidence_pct": 94.85,
+        "mean_counter_harvest_trap_pct": 4.89,
+        "mean_gap_s": 2.342,
+        "mean_latency_ms": 2.82,
+        "cold_start_latency_ms": 0.08,
+        "steady_state_mean_latency_ms": 2.83,
+        "steady_state_p95_latency_ms": 19.61
+      }
+    },
+    {
+      "id": "2025_Suzuka_Race_VER_NOR_openf1",
+      "replay": "C:\\Users\\Admin\\Downloads\\apexguard_final_backend_lstm_openf1\\app\\data\\replays\\2025_Suzuka_Race_VER_NOR_openf1.json",
+      "backtest": "C:\\Users\\Admin\\Downloads\\apexguard_final_backend_lstm_openf1\\app\\data\\evaluations\\backtests\\2025_Suzuka_Race_VER_NOR_openf1_backtest.json",
+      "metrics": {
+        "rule_compliance_pct": 100.0,
+        "aggressive_action_rate_pct": 0.56,
+        "fallback_rate_pct": 75.56,
+        "high_trap_aggressive_rate_pct": 0.0,
+        "mean_overtake_probability_pct": 6.89,
+        "mean_decision_confidence_pct": 91.51,
+        "mean_counter_harvest_trap_pct": 1.91,
+        "mean_gap_s": 1.25,
+        "mean_latency_ms": 12.13,
+        "cold_start_latency_ms": 0.05,
+        "steady_state_mean_latency_ms": 12.2,
+        "steady_state_p95_latency_ms": 59.67
+      }
+    }
+  ]
+}
