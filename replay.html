@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ApexGuard — Race Replay</title>
+<link rel="icon" type="image/png" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/favicon-180.png">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<div class="ambient"><div class="grid-lines"></div><div class="scanline"></div></div>
+
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand"><span class="mark"><img src="assets/logo-mark-white.png" alt="ApexGuard logo" class="mark-logo"></span> ApexGuard</div>
+    <div class="nav-label">Live</div>
+    <a href="index.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg> Dashboard</a>
+    <a href="replay.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M10 8.5v7l6-3.5-6-3.5z"/></svg> Race Replay</a>
+    <a href="decide.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg> Decision Engine</a>
+    <a href="simulate.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12h4l2-7 4 14 2-7h6"/></svg> Simulate</a>
+    <a href="beliefs.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3.2"/><path d="M12 3v3.5M12 17.5V21M3 12h3.5M17.5 12H21M5.6 5.6l2.5 2.5M15.9 15.9l2.5 2.5M18.4 5.6l-2.5 2.5M8.1 15.9l-2.5 2.5"/></svg> Opponent Belief</a>
+    <a href="ers.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/><circle cx="12" cy="12" r="10" opacity="0.25"/></svg> ERS & Powertrain</a>
+    <div class="nav-label">Analytics</div>
+    <a href="benchmark.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V10M11 20V4M18 20v-7"/></svg> Performance Lab</a>
+    <div class="nav-label">Library</div>
+    <a href="scenarios.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 3v18M5 4h11l-2 4 2 4H5"/></svg> Scenarios</a>
+    <a href="tracks.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 3c2 3 2 15 0 18M3 12c3-2 15-2 18 0"/></svg> Track Library</a>
+    <div class="nav-label">System</div>
+    <a href="audits.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg> Audit Trail</a>
+    <a href="health.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12h4l2 6 4-14 2 8h6"/></svg> System Health</a>
+    <div class="sidebar-footer"><span class="status-pip"><span class="dot"></span> LIVE</span><span>v1 · Phase 1</span></div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div><h1>Race Replay</h1></div>
+      <div class="topbar-right">
+        <span class="badge badge-red" id="liveBadge"><span class="dot"></span> LIVE</span>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <!-- ===== Replay header strip ===== -->
+      <div class="glass panel reveal replay-head">
+        <div class="replay-head-left">
+          <span class="replay-gp">MONACO GP 2025</span>
+          <span class="replay-lap">LAP <b id="lapNow">37</b> / 78</span>
+        </div>
+        <div class="replay-transport">
+          <button class="transport-btn" id="btnRestart" title="Restart">⟲</button>
+          <button class="transport-btn primary" id="btnPlay" title="Play/Pause">▶</button>
+          <div class="replay-scrub">
+            <div class="replay-scrub-fill" id="scrubFill"></div>
+          </div>
+          <span class="mono small text-muted" id="scrubTime">00:00 / 00:36</span>
+        </div>
+      </div>
+
+      <div class="grid grid-2" style="align-items:start; margin-top:16px;">
+
+        <!-- ===== TRACK MAP ===== -->
+        <div class="glass panel reveal">
+          <div class="panel-head"><h3>Track Position</h3><span class="tag">MONACO · SECTOR 2</span></div>
+          <div class="track-stage">
+            <svg viewBox="0 0 520 340" id="trackSvg">
+              <path id="trackPath" d="M60,220 C40,140 80,60 170,50 C240,42 250,90 300,95
+                       C360,100 370,55 430,60 C480,64 500,100 480,140
+                       C462,176 400,170 380,200 C360,230 400,255 380,285
+                       C355,320 260,315 220,290 C185,268 200,235 160,225
+                       C120,215 85,255 60,220 Z"
+                    fill="none" stroke="rgba(255,255,255,0.14)" stroke-width="14" stroke-linejoin="round"/>
+              <path d="M60,220 C40,140 80,60 170,50 C240,42 250,90 300,95
+                       C360,100 370,55 430,60 C480,64 500,100 480,140
+                       C462,176 400,170 380,200 C360,230 400,255 380,285
+                       C355,320 260,315 220,290 C185,268 200,235 160,225
+                       C120,215 85,255 60,220 Z"
+                    fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1" stroke-dasharray="2 10"/>
+              <!-- DRS zone -->
+              <path d="M300,95 C360,100 370,55 430,60" fill="none" stroke="var(--green)" stroke-width="4" stroke-linecap="round" opacity="0.55"/>
+              <text x="345" y="80" class="track-label drs-label">DRS ZONE</text>
+              <!-- Attack zone -->
+              <path d="M220,290 C185,268 200,235 160,225" fill="none" stroke="var(--red)" stroke-width="4" stroke-linecap="round" opacity="0.5" stroke-dasharray="1 8"/>
+              <text x="145" y="270" class="track-label attack-label">ATTACK ZONE</text>
+
+              <g id="dotP3"><circle r="5.5" class="track-dot dot-p3"/><text class="track-dot-label" dy="-10">P3</text></g>
+              <g id="dotTarget"><circle r="6.5" class="track-dot dot-target"/><text class="track-dot-label" dy="-11">TARGET</text></g>
+              <g id="dotEgo"><circle r="7" class="track-dot dot-ego"/><text class="track-dot-label" dy="-12">EGO</text></g>
+            </svg>
+          </div>
+        </div>
+
+        <!-- ===== TELEMETRY + BELIEF ===== -->
+        <div class="glass panel reveal">
+          <div class="panel-head"><h3>Live Telemetry</h3><span class="tag" id="drsTag">DRS OFF</span></div>
+          <div class="telemetry-grid">
+            <div class="telemetry-cell"><span class="tk">SPEED</span><span class="tv mono" id="tSpeed">0</span><span class="tu">km/h</span></div>
+            <div class="telemetry-cell"><span class="tk">GAP</span><span class="tv mono" id="tGap">0.00</span><span class="tu">s</span></div>
+            <div class="telemetry-cell"><span class="tk">DRS</span><span class="tv mono" id="tDrs">OFF</span><span class="tu">&nbsp;</span></div>
+            <div class="telemetry-cell"><span class="tk">THROTTLE</span><span class="tv mono" id="tThrottle">0</span><span class="tu">%</span></div>
+            <div class="telemetry-cell"><span class="tk">SOC</span><span class="tv mono" id="tSoc">0</span><span class="tu">%</span></div>
+            <div class="telemetry-cell"><span class="tk">BRAKE</span><span class="tv mono" id="tBrake">0</span><span class="tu">%</span></div>
+          </div>
+
+          <div class="mt-24">
+            <div class="belief-row">
+              <span class="small text-muted">OPPONENT BELIEF</span>
+              <span class="mono small" id="beliefLabel">— DEFENDING 0%</span>
+            </div>
+            <div class="meter"><i id="beliefMeter" style="background:linear-gradient(90deg,var(--blue),var(--amber));"></i></div>
+          </div>
+          <div class="mt-16">
+            <div class="belief-row">
+              <span class="small text-muted">COUNTER-HARVEST TRAP</span>
+              <span class="mono small" id="trapLabel">0%</span>
+            </div>
+            <div class="meter"><i id="trapMeter" style="background:linear-gradient(90deg,var(--green),var(--red));"></i></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== DECISION STRIP ===== -->
+      <div class="glass panel reveal decision-strip mt-16">
+        <div class="decision-col">
+          <span class="dc-label">PPO PROPOSAL</span>
+          <span class="dc-value" id="ppoAction">—</span>
+        </div>
+        <div class="decision-arrow">→</div>
+        <div class="decision-col">
+          <span class="dc-label">VERIFIER</span>
+          <span class="dc-value" id="verifierResult">—</span>
+        </div>
+        <div class="decision-arrow">→</div>
+        <div class="decision-col final">
+          <span class="dc-label">FINAL ACTION</span>
+          <span class="dc-value" id="finalAction">—</span>
+        </div>
+        <div class="decision-event" id="eventBadge"></div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="assets/app.js"></script>
+<script src="assets/replay.js"></script>
+</body>
+</html>

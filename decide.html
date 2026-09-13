@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ApexGuard — Decision Engine</title>
+<link rel="icon" type="image/png" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/favicon-180.png">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<div class="ambient"><div class="grid-lines"></div><div class="scanline"></div></div>
+
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand"><span class="mark"><img src="assets/logo-mark-white.png" alt="ApexGuard logo" class="mark-logo"></span> ApexGuard</div>
+    <div class="nav-label">Live</div>
+    <a href="index.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg> Dashboard</a>
+    <a href="replay.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M10 8.5v7l6-3.5-6-3.5z"/></svg> Race Replay</a>
+    <a href="decide.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg> Decision Engine</a>
+    <a href="simulate.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12h4l2-7 4 14 2-7h6"/></svg> Simulate</a>
+    <a href="beliefs.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3.2"/><path d="M12 3v3.5M12 17.5V21M3 12h3.5M17.5 12H21M5.6 5.6l2.5 2.5M15.9 15.9l2.5 2.5M18.4 5.6l-2.5 2.5M8.1 15.9l-2.5 2.5"/></svg> Opponent Belief</a>
+    <a href="ers.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/><circle cx="12" cy="12" r="10" opacity="0.25"/></svg> ERS & Powertrain</a>
+    <div class="nav-label">Analytics</div>
+    <a href="benchmark.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V10M11 20V4M18 20v-7"/></svg> Performance Lab</a>
+    <div class="nav-label">Library</div>
+    <a href="scenarios.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 3v18M5 4h11l-2 4 2 4H5"/></svg> Scenarios</a>
+    <a href="tracks.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 3c2 3 2 15 0 18M3 12c3-2 15-2 18 0"/></svg> Track Library</a>
+    <div class="nav-label">System</div>
+    <a href="audits.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg> Audit Trail</a>
+    <a href="health.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12h4l2 6 4-14 2 8h6"/></svg> System Health</a>
+    <div class="sidebar-footer"><span class="status-pip"><span class="dot"></span> LIVE</span><span>v1 · Phase 1</span></div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div><h1>Decision Engine</h1></div>
+      <div class="topbar-right">
+        <span class="small text-muted">Mode</span>
+        <div class="toggle" id="modeToggle">
+          <button class="active" data-value="VERIFIED">VERIFIED</button>
+          <button data-value="FAST">FAST</button>
+          <div class="slide"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="grid grid-2" style="align-items:start;">
+
+        <!-- ===== INPUT PANEL ===== -->
+        <div class="glass panel reveal">
+          <div class="panel-head"><h3>Race State Input</h3><span class="tag">EGO · TARGET · TRAFFIC</span></div>
+
+          <div class="field">
+            <label>Ego SOC <b id="lblSoc">46%</b></label>
+            <input type="range" id="inSoc" min="0" max="100" value="46">
+          </div>
+          <div class="field">
+            <label>Gap to target <b id="lblGap">0.55s</b></label>
+            <input type="range" id="inGap" min="10" max="300" value="55">
+          </div>
+          <div class="field">
+            <label>Rear gap (following car) <b id="lblRear">0.40s</b></label>
+            <input type="range" id="inRear" min="10" max="300" value="40">
+          </div>
+          <div class="field">
+            <label>Overtake difficulty (track) <b id="lblDiff">0.65</b></label>
+            <input type="range" id="inDiff" min="0" max="100" value="65">
+          </div>
+          <div class="field">
+            <label>Deployment budget remaining <b id="lblBudget">1800 kJ</b></label>
+            <input type="range" id="inBudget" min="0" max="2000" value="1800">
+          </div>
+          <div class="field" style="margin-bottom:14px;">
+            <label>Cars within 3s <b id="lblCars">4</b></label>
+            <input type="range" id="inCars" min="0" max="8" value="4">
+          </div>
+
+          <div class="chip-row mt-16">
+            <span class="small text-muted" style="padding:7px 0;">Load scenario:</span>
+            <button class="chip" data-scn="isolated_pass">Isolated pass</button>
+            <button class="chip active" data-scn="rear_drs_threat">Rear DRS threat</button>
+            <button class="chip" data-scn="low_soc_guard">Low SOC guard</button>
+          </div>
+
+          <button class="btn btn-primary btn-block mt-24" id="runBtn">Run Decision <span class="mono small" style="opacity:0.7;">⌘ + Enter</span></button>
+          <p class="small text-muted mt-16" style="text-align:center;">Simulated locally in your browser — no backend call is made.</p>
+        </div>
+
+        <!-- ===== PIPELINE + RESULT ===== -->
+        <div class="glass panel reveal">
+          <div class="panel-head"><h3>Verifier Pipeline</h3><span class="tag" id="latencyTag">IDLE</span></div>
+          <div class="pipeline" id="pipeline"></div>
+        </div>
+      </div>
+
+      <!-- ===== DECISION TRACE ===== -->
+      <div class="glass panel mt-24 reveal">
+        <div class="panel-head"><h3>Decision Trace</h3><span class="tag" id="traceTag">IDLE</span></div>
+        <div class="trace-log" id="traceLog">
+          <div class="trace-empty" id="traceEmpty">Run a decision to see the live pipeline trace — telemetry → opportunity → GNN → belief → trap → PPO → Monte Carlo → verifier → final.</div>
+        </div>
+      </div>
+
+      <!-- ===== MONTE CARLO ROLLOUTS ===== -->
+      <div class="glass panel mt-24 reveal">
+        <div class="panel-head"><h3>Monte Carlo Rollouts</h3><span class="tag" id="mcTag">IDLE</span></div>
+        <div class="mc-chart-wrap">
+          <canvas id="mcCanvas" width="1120" height="320"></canvas>
+          <div class="mc-empty" id="mcEmpty">Run a decision to project simulated futures for the selected action.</div>
+        </div>
+        <div class="mc-legend">
+          <span><i style="background:var(--green)"></i> Success</span>
+          <span><i style="background:var(--amber)"></i> Counterattack</span>
+          <span><i style="background:var(--red)"></i> Reserve breach</span>
+          <span><i style="background:#fff"></i> Median</span>
+          <span><i class="band"></i> Confidence band</span>
+        </div>
+      </div>
+
+      <!-- ===== RESULT ROW ===== -->
+      <div class="glass panel mt-24 reveal" id="resultPanel" style="opacity:0.4;">
+        <div class="panel-head"><h3>Recommendation</h3><span class="tag">DECISION RESPONSE</span></div>
+        <div class="empty-state" id="resultEmpty">
+          <div class="icon">◎</div>
+          <p>Run a decision to see the recommended action, confidence, and candidate ranking here.</p>
+        </div>
+        <div id="resultBody" style="display:none;">
+          <div class="flex justify-between" style="flex-wrap:wrap; gap:24px;">
+            <div>
+              <div style="font-size:30px; font-weight:800; letter-spacing:-0.02em;" id="resAction">—</div>
+              <p class="text-muted small mt-8" id="resExplain" style="max-width:480px;"></p>
+            </div>
+            <div class="flex gap-12" style="flex-wrap:wrap; align-items:flex-start;">
+              <div class="gauge" style="width:84px;height:84px;" id="gaugeConf"><div class="val"><b id="gaugeConfVal" style="font-size:15px;">0%</b><span style="font-size:8px;">CONF</span></div></div>
+              <span class="badge badge-amber" id="riskBadge"><span class="dot"></span> RISK: —</span>
+            </div>
+          </div>
+
+          <div class="grid grid-4 mt-24">
+            <div><div class="small text-muted mono">PASS PROBABILITY</div><div style="font-size:19px; font-weight:700;" id="metricPass">—</div></div>
+            <div><div class="small text-muted mono">COUNTERATTACK RISK</div><div style="font-size:19px; font-weight:700;" id="metricCounter">—</div></div>
+            <div><div class="small text-muted mono">RULE COMPLIANT</div><div style="font-size:19px; font-weight:700;" id="metricRule">—</div></div>
+            <div><div class="small text-muted mono">LATENCY</div><div style="font-size:19px; font-weight:700;" id="metricLatency">—</div></div>
+          </div>
+
+          <!-- ===== WHY? explanation ===== -->
+          <div class="why-box mt-24" id="whyBox">
+            <div class="why-head">Why <b id="whyAction">—</b>?</div>
+            <ul id="whyList"></ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== ACTION COMPARISON ===== -->
+      <div class="glass panel mt-24 reveal">
+        <div class="panel-head"><h3>Action Comparison</h3><span class="tag">PASS · ENERGY · COUNTER · RESERVE</span></div>
+        <table class="data-table">
+          <thead><tr><th>Action</th><th>Pass Prob.</th><th>Energy</th><th>Counterattack</th><th>Reserve After</th><th>Status</th></tr></thead>
+          <tbody id="candidatesBody"></tbody>
+        </table>
+        <div class="why-not-box mt-16" id="whyNotBox" style="display:none;">
+          <span class="wn-label">Why not <b id="whyNotAction">—</b>?</span>
+          <span class="wn-reason" id="whyNotReason"></span>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script src="assets/app.js"></script>
+<script>
+  const scenarios = {
+    isolated_pass:     { soc:62, gap:45,  rear:240, diff:40, budget:1900, cars:1 },
+    rear_drs_threat:   { soc:46, gap:55,  rear:40,  diff:65, budget:1800, cars:4 },
+    low_soc_guard:     { soc:19, gap:50,  rear:120, diff:55, budget:900,  cars:2 },
+  };
+
+  const els = {
+    soc: document.getElementById('inSoc'), lblSoc: document.getElementById('lblSoc'),
+    gap: document.getElementById('inGap'), lblGap: document.getElementById('lblGap'),
+    rear: document.getElementById('inRear'), lblRear: document.getElementById('lblRear'),
+    diff: document.getElementById('inDiff'), lblDiff: document.getElementById('lblDiff'),
+    budget: document.getElementById('inBudget'), lblBudget: document.getElementById('lblBudget'),
+    cars: document.getElementById('inCars'), lblCars: document.getElementById('lblCars'),
+  };
+
+  function refreshLabels(){
+    els.lblSoc.innerHTML = `<b>${els.soc.value}%</b>`;
+    els.lblGap.innerHTML = `<b>${(els.gap.value/100).toFixed(2)}s</b>`;
+    els.lblRear.innerHTML = `<b>${(els.rear.value/100).toFixed(2)}s</b>`;
+    els.lblDiff.innerHTML = `<b>${(els.diff.value/100).toFixed(2)}</b>`;
+    els.lblBudget.innerHTML = `<b>${els.budget.value} kJ</b>`;
+    els.lblCars.innerHTML = `<b>${els.cars.value}</b>`;
+    Object.values(els).forEach(el => { if (el.type==='range') el.style.setProperty('--fill', ((el.value-el.min)/(el.max-el.min)*100)+'%'); });
+  }
+  Object.values(els).forEach(el => { if (el.tagName==='INPUT') el.addEventListener('input', refreshLabels); });
+  refreshLabels();
+
+  document.querySelectorAll('.chip[data-scn]').forEach(chip => {
+    chip.addEventListener('click', () => {
+      document.querySelectorAll('.chip[data-scn]').forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      const s = scenarios[chip.dataset.scn];
+      els.soc.value = s.soc; els.gap.value = s.gap; els.rear.value = s.rear;
+      els.diff.value = s.diff; els.budget.value = s.budget; els.cars.value = s.cars;
+      refreshLabels();
+    });
+  });
+
+  let mode = 'VERIFIED';
+  initToggle(document.getElementById('modeToggle'), (i, val) => { mode = val; });
+
+  const steps = [
+    ['Freshness guard', 'Telemetry age checked against 500ms staleness threshold.'],
+    ['Legal-action mask', 'Hard SOC/budget/segment rules filter out illegal candidates.'],
+    ['Opportunity gating', 'Cheap gap/closing-speed/DRS heuristic check before full pipeline runs.'],
+    ['Rival estimation', 'Tyre/energy proxies estimated from observed stint and sector trends.'],
+    ['Traffic risk', 'Counterattack and post-pass blockage risk estimated deterministically.'],
+    ['Overtake probability', 'Per-candidate pass probability from the calibrated classifier.'],
+    ['Lookahead rollout', mode === 'VERIFIED' ? 'Monte Carlo: 30 stochastic paths per candidate action.' : 'Single-shot analytical projection of time delta / SOC / net value.'],
+    ['Ranking', 'Highest legal risk-adjusted net value selected.'],
+    ['Fail-safe check', 'Falls back to HOLD if nothing clears the minimum value bar.'],
+    ['Explanation + audit', 'Plain-English rationale generated and written to the audit trail.'],
+  ];
+
+  const pipelineEl = document.getElementById('pipeline');
+  function buildPipeline(){
+    pipelineEl.innerHTML = steps.map((s,i) => `
+      <div class="pipe-step pending" data-i="${i}">
+        <div class="rail"><div class="node">${i+1}</div><div class="line"></div></div>
+        <div class="body"><h5>${s[0]}</h5><p>${s[1]}</p></div>
+      </div>`).join('');
+  }
+  buildPipeline();
+
+  function scoreScenario(s, mode){
+    // Small illustrative heuristic mirroring the backend's real logic shape —
+    // purely for a lively local demo, not the actual verifier.
+    const socOk = s.soc >= 15;
+    const budgetOk = s.budget > 200;
+    const rearRisk = Math.max(0, 1 - s.rear/300);
+    const diffFactor = s.diff/100;
+    const passProb = Math.max(0.05, Math.min(0.98, (1 - diffFactor) * 0.9 + (s.cars<=1?0.15:0) - rearRisk*0.25));
+    const counterattack = Math.min(0.97, rearRisk*0.6 + diffFactor*0.3 + (s.cars>=4?0.15:0));
+    let action, riskLevel, explanation, ruleCompliant = socOk && budgetOk;
+
+    if (!socOk){
+      action = 'HOLD'; riskLevel='LOW';
+      explanation = 'Ego SOC is below the minimum reserve threshold — any deploy action is illegal regardless of opportunity.';
+    } else if (!budgetOk){
+      action = 'HARVEST'; riskLevel='LOW';
+      explanation = 'Deployment budget nearly exhausted — harvesting is the only legal energy-positive action.';
+    } else if (counterattack > 0.6 && passProb > 0.5){
+      action = 'PARTIAL_DEPLOY'; riskLevel='MEDIUM';
+      explanation = 'Verifier downgraded the aggressive option — counterattack risk from rear traffic is high enough to erase the raw pass-value advantage of a full deploy.';
+    } else if (passProb > 0.7 && counterattack < 0.4){
+      action = 'FULL_DEPLOY'; riskLevel = counterattack>0.25 ? 'MEDIUM':'LOW';
+      explanation = 'High pass value with low downstream risk — an aggressive deploy clears the value bar cleanly.';
+    } else if (passProb < 0.3){
+      action = 'HOLD'; riskLevel='LOW';
+      explanation = 'Pass probability too low to justify any deploy action this lap — holding position and re-evaluating next tick.';
+    } else {
+      action = 'PARTIAL_DEPLOY'; riskLevel='MEDIUM';
+      explanation = 'Moderate opportunity with moderate risk — a partial deploy is the highest risk-adjusted net value option.';
+    }
+
+    const confidence = mode === 'VERIFIED' ? 1.0 : Math.round((0.7 + Math.random()*0.2)*1000)/1000;
+    const latency = mode === 'VERIFIED' ? (9 + Math.random()*4) : (3 + Math.random()*2);
+
+    // Pre-verifier PPO proposal, before the rule-based downgrade below is applied —
+    // used only to make the Decision Trace show a realistic accept/reject moment.
+    const proposedAction = passProb > 0.7 ? 'FULL_DEPLOY' : passProb > 0.3 ? 'PARTIAL_DEPLOY' : 'HOLD';
+    const verifierPassed = ruleCompliant && proposedAction === action;
+    const verifierReason = !ruleCompliant
+      ? (!socOk ? 'SOC below reserve threshold' : 'deployment budget exhausted')
+      : !verifierPassed
+        ? 'counterattack risk exceeds safety threshold'
+        : 'within risk and reserve bounds';
+
+    const ENERGY_KJ = { HOLD:0, HARVEST:0, PARTIAL_DEPLOY:120, FULL_DEPLOY:260 };
+    const candidates = [
+      { action:'HARVEST', legal: budgetOk },
+      { action:'HOLD', legal:true },
+      { action:'PARTIAL_DEPLOY', legal: socOk && budgetOk },
+      { action:'FULL_DEPLOY', legal: socOk && budgetOk && s.diff < 90 },
+    ].map(c => {
+      const isSelected = c.action === action;
+      const passMul = { HARVEST:0.12, HOLD:0.18, PARTIAL_DEPLOY:0.85, FULL_DEPLOY:1.05 }[c.action];
+      const counterMul = { HARVEST:0.18, HOLD:0.15, PARTIAL_DEPLOY:0.85, FULL_DEPLOY:1.3 }[c.action];
+      const pp = Math.min(0.97, Math.max(0.03, passProb * passMul));
+      const cAtk = Math.min(0.97, Math.max(0.02, counterattack * counterMul));
+      const energyKJ = ENERGY_KJ[c.action];
+      const reserveAfter = c.legal ? Math.max(0, Math.min(100, s.soc - energyKJ/10 + (c.action==='HARVEST'?5:0))) : s.soc;
+      const netVal = c.legal ? (pp*1.4 - cAtk*0.9) : -1;
+      return {
+        action: c.action, legal: c.legal,
+        passProb: pp, counterattack: cAtk, energyKJ, reserveAfter, netVal,
+        status: !c.legal ? 'ILLEGAL' : isSelected ? 'SELECTED' : 'REJECTED',
+      };
+    });
+
+    return { action, riskLevel, explanation, ruleCompliant, confidence, latency, passProb, counterattack, candidates, proposedAction, verifierPassed, verifierReason };
+  }
+
+  function currentScenario(){
+    return {
+      soc: +els.soc.value, gap: +els.gap.value/100, rear: +els.rear.value/100,
+      diff: +els.diff.value/100 * 100, budget: +els.budget.value, cars: +els.cars.value
+    };
+  }
+
+  function fmtClock(d){
+    const p = (n,l=2) => String(n).padStart(l,'0');
+    return `${p(d.getHours())}:${p(d.getMinutes())}:${p(d.getSeconds())}.${p(d.getMilliseconds(),3)}`;
+  }
+
+  function buildTraceLines(r, s, mode){
+    const traffic = s.cars >= 4 ? 'TRAFFIC DENSE' : s.cars >= 2 ? 'TRAFFIC MODERATE' : 'TRAFFIC CLEAR';
+    const window = r.passProb > 0.35 ? 'ATTACK WINDOW' : 'NO WINDOW';
+    const defendPct = Math.round(r.counterattack * 55 + 15);
+    const defendPrev = Math.max(0, defendPct - Math.round(8 + Math.random()*10));
+    const trapPct = Math.round(r.counterattack * 100);
+
+    const lines = [
+      { stage:'TELEMETRY',   cls:'ok',   status:'✓ FRESH' },
+      { stage:'OPPORTUNITY', cls: window==='ATTACK WINDOW' ? 'ok':'warn', status:`${window==='ATTACK WINDOW'?'✓':'⚠'} ${window}` },
+      { stage:'GNN',         cls: traffic==='TRAFFIC CLEAR' ? 'ok':'warn', status:`${traffic==='TRAFFIC CLEAR'?'✓':'⚠'} ${traffic}` },
+      { stage:'BELIEF',      cls:'info', status:`↑ DEFENDING ${defendPrev} → ${defendPct}%` },
+      { stage:'TRAP',        cls: trapPct>60?'warn':'ok', status:`${trapPct>60?'⚠':'✓'} ${trapPct}%` },
+      { stage:'PPO',         cls:'info', status:`→ ${r.proposedAction.replace('_',' ')}` },
+      { stage:'MONTE CARLO', cls:'info', status: mode==='VERIFIED' ? '→ 1000 ROLLOUTS' : '→ SKIPPED (FAST MODE)' },
+      { stage:'VERIFIER',    cls: r.verifierPassed ? 'ok' : 'bad', status: r.verifierPassed ? '✓ PASSED' : `✕ ${r.verifierReason.toUpperCase()}` },
+      { stage:'FINAL',       cls:'final', status:`→ ${r.action.replace('_',' ')}` },
+    ];
+    return lines;
+  }
+
+  function renderTrace(lines){
+    const log = document.getElementById('traceLog');
+    log.innerHTML = '';
+    let t = new Date();
+    lines.forEach((l, i) => {
+      t = new Date(t.getTime() + 3 + Math.random()*14);
+      const row = document.createElement('div');
+      row.className = 'trace-line ' + l.cls;
+      row.style.animationDelay = (i * 0.12) + 's';
+      row.innerHTML = `<span class="t-time">${fmtClock(t)}</span><span class="t-stage">${l.stage}</span><span class="t-status">${l.status}</span>`;
+      log.appendChild(row);
+    });
+  }
+
+  function runPipeline(){
+    const runBtn = document.getElementById('runBtn');
+    runBtn.disabled = true;
+    document.getElementById('latencyTag').textContent = 'RUNNING…';
+    document.getElementById('traceTag').textContent = 'RUNNING…';
+    document.getElementById('resultPanel').style.opacity = '1';
+    document.getElementById('resultEmpty').style.display = 'flex';
+    document.getElementById('resultBody').style.display = 'none';
+    buildPipeline();
+
+    const s = currentScenario();
+    const r = scoreScenario({soc:s.soc, rear:els.rear.value, diff:els.diff.value, budget:s.budget, cars:s.cars}, mode);
+    renderTrace(buildTraceLines(r, s, mode));
+
+    const nodes = [...document.querySelectorAll('.pipe-step')];
+    const stepDelay = mode === 'VERIFIED' ? 160 : 90;
+
+    nodes.forEach((n,i) => {
+      setTimeout(() => {
+        nodes.forEach(x => x.classList.remove('active'));
+        n.classList.remove('pending'); n.classList.add('active');
+        n.querySelector('.node').textContent = '●';
+        if (i > 0){ nodes[i-1].classList.remove('active'); nodes[i-1].classList.add('done'); nodes[i-1].querySelector('.node').innerHTML='✓'; }
+        if (i === nodes.length - 1){
+          setTimeout(() => {
+            n.classList.remove('active'); n.classList.add('done'); n.querySelector('.node').innerHTML = '✓';
+            document.getElementById('traceTag').textContent = `${r.latency.toFixed(1)}ms · ${mode}`;
+            showResult(r);
+            runBtn.disabled = false;
+          }, stepDelay);
+        }
+      }, i * stepDelay);
+    });
+  }
+
+  function showResult(r){
+    document.getElementById('latencyTag').textContent = `${r.latency.toFixed(1)}ms · ${mode}`;
+    document.getElementById('resultEmpty').style.display = 'none';
+    document.getElementById('resultBody').style.display = 'block';
+    document.getElementById('resAction').textContent = r.action;
+    document.getElementById('resExplain').textContent = r.explanation;
+    animateGauge(document.getElementById('gaugeConf'), r.confidence*100);
+    countUp(document.getElementById('gaugeConfVal'), r.confidence*100, {suffix:'%'});
+
+    const riskBadge = document.getElementById('riskBadge');
+    riskBadge.className = 'badge ' + (r.riskLevel==='LOW'?'badge-green':r.riskLevel==='MEDIUM'?'badge-amber':'badge-red');
+    riskBadge.innerHTML = `<span class="dot"></span> RISK: ${r.riskLevel}`;
+
+    document.getElementById('metricPass').textContent = (r.passProb*100).toFixed(1)+'%';
+    document.getElementById('metricCounter').textContent = (r.counterattack*100).toFixed(1)+'%';
+    document.getElementById('metricRule').innerHTML = r.ruleCompliant ? '<span style="color:var(--green)">TRUE</span>' : '<span style="color:var(--red)">FALSE</span>';
+    document.getElementById('metricLatency').textContent = r.latency.toFixed(1)+'ms';
+
+    const statusBadge = st => st==='SELECTED' ? 'badge-green' : st==='REJECTED' ? 'badge-muted' : 'badge-red';
+    document.getElementById('candidatesBody').innerHTML = r.candidates.map(c => `
+      <tr>
+        <td><b>${c.action.replace('_',' ')}</b></td>
+        <td class="mono">${c.legal ? (c.passProb*100).toFixed(0)+'%' : '—'}</td>
+        <td class="mono">${c.energyKJ} kJ</td>
+        <td class="mono">${c.legal ? (c.counterattack*100).toFixed(0)+'%' : '—'}</td>
+        <td class="mono">${c.legal ? Math.round(c.reserveAfter)+'%' : '—'}</td>
+        <td><span class="badge ${statusBadge(c.status)}"><span class="dot"></span>${c.status}</span></td>
+      </tr>`).join('');
+
+    // "Why not <the strongest rejected alternative>?" callout
+    const rejected = r.candidates.filter(c => c.legal && c.status === 'REJECTED').sort((a,b) => b.netVal - a.netVal);
+    const whyNotBox = document.getElementById('whyNotBox');
+    if (rejected.length){
+      const top = rejected[0];
+      document.getElementById('whyNotAction').textContent = top.action.replace('_',' ');
+      document.getElementById('whyNotReason').textContent =
+        `Counterattack risk ${(top.counterattack*100).toFixed(0)}% ` +
+        (top.counterattack > 0.35 ? 'exceeds the safety threshold, even with a higher raw pass value.' : 'combined with lower net value versus the selected action.');
+      whyNotBox.style.display = 'flex';
+    } else {
+      whyNotBox.style.display = 'none';
+    }
+
+    // "Why <selected action>?" explanation checklist
+    const whyList = document.getElementById('whyList');
+    document.getElementById('whyAction').textContent = r.action.replace('_',' ');
+    const bullets = [];
+    bullets.push({ ok: r.passProb > 0.35, text: r.passProb > 0.35 ? 'Attack window is open' : 'Attack window is marginal' });
+    bullets.push({ ok: s_cars_low(r), text: s_cars_low(r) ? 'Traffic risk is low' : 'Traffic risk is elevated' });
+    bullets.push({ ok: true, text: r.counterattack > 0.5 ? 'Target is likely defending' : 'Target is not showing defensive signals' });
+    bullets.push({ ok: r.counterattack <= 0.5, warn: r.counterattack > 0.5, text: `Counter-harvest probability = ${(r.counterattack*100).toFixed(0)}%` });
+    if (!r.verifierPassed) bullets.push({ warn:true, text: `${r.proposedAction.replace('_',' ')} rejected — ${r.verifierReason}` });
+    const kept = r.candidates.find(c => c.action === r.action);
+    if (kept) bullets.push({ ok:true, text: `${r.action.replace('_',' ')} retains ${Math.round(kept.reserveAfter)}% reserve` });
+    whyList.innerHTML = bullets.map(b => `<li class="${b.warn?'warn':b.ok?'ok':''}">${b.warn?'⚠':b.ok?'✓':'·'} ${b.text}</li>`).join('');
+
+    renderMonteCarlo(r);
+  }
+
+  function s_cars_low(r){ return r.counterattack < 0.55; }
+
+  // ---------- Monte Carlo rollout visualization ----------
+  function seededRandom(seed){
+    let s = seed;
+    return () => { s = (s * 1103515245 + 12345) & 0x7fffffff; return s / 0x7fffffff; };
+  }
+
+  function renderMonteCarlo(r){
+    document.getElementById('mcEmpty').style.display = 'none';
+    document.getElementById('mcTag').textContent = (r.action === 'HOLD' || r.action==='HARVEST') ? '30 ROLLOUTS' : '1000 ROLLOUTS (30 SHOWN)';
+
+    const canvas = document.getElementById('mcCanvas');
+    const ctx = canvas.getContext('2d');
+    const W = canvas.width, H = canvas.height;
+    ctx.clearRect(0,0,W,H);
+
+    const padL = 46, padR = 20, padT = 16, padB = 30;
+    const plotW = W - padL - padR, plotH = H - padT - padB;
+    const STEPS = 13; // t = 0..3s in 0.25s increments
+    const rand = seededRandom(Math.round(r.passProb*1000 + r.counterattack*7919 + 17));
+
+    const total = 30;
+    const successN = Math.round(total * Math.min(0.85, Math.max(0.1, r.passProb)));
+    const breachN = Math.round(total * Math.min(0.25, r.counterattack * 0.2));
+    const counterN = Math.max(0, total - successN - breachN);
+
+    function genPath(kind){
+      const pts = [];
+      let y = 0.9 + (rand()-0.5)*0.08;
+      for (let i=0;i<STEPS;i++){
+        const t = i/(STEPS-1);
+        let target;
+        if (kind==='success') target = 0.9 - t*0.68;
+        else if (kind==='counter') target = 0.9 - t*0.35 + Math.sin(t*Math.PI)*0.22;
+        else target = 0.9 - t*0.5 + t*t*0.35; // reserve breach: closes then stalls/reverses
+        y = y*0.5 + target*0.5 + (rand()-0.5)*0.05;
+        pts.push(Math.max(0.08, Math.min(1.05, y)));
+      }
+      return pts;
+    }
+
+    const groups = [
+      { kind:'success', n: successN, color: 'rgba(61,220,132,0.55)' },
+      { kind:'counter',  n: counterN,  color: 'rgba(245,180,0,0.5)' },
+      { kind:'breach',   n: breachN,   color: 'rgba(232,35,43,0.5)' },
+    ];
+
+    const xAt = i => padL + (i/(STEPS-1))*plotW;
+    const yAt = v => padT + (1 - v) * plotH * 0.92;
+
+    // gridlines
+    ctx.strokeStyle = 'rgba(255,255,255,0.06)'; ctx.lineWidth = 1;
+    ctx.font = '11px JetBrains Mono, monospace';
+    ctx.fillStyle = 'rgba(255,255,255,0.35)';
+    [0.2,0.4,0.6,0.8,1.0].forEach(v => {
+      const y = yAt(v);
+      ctx.beginPath(); ctx.moveTo(padL, y); ctx.lineTo(W-padR, y); ctx.stroke();
+      ctx.fillText(v.toFixed(1)+'s', 6, y+4);
+    });
+    for(let i=0;i<STEPS;i+=4){
+      ctx.fillText((i*0.25).toFixed(1)+'s', xAt(i)-8, H-10);
+    }
+
+    // all rollout paths + collect for band/median
+    const allPaths = [];
+    groups.forEach(g => {
+      for (let n=0; n<g.n; n++){
+        const pts = genPath(g.kind);
+        allPaths.push(pts);
+        ctx.strokeStyle = g.color; ctx.lineWidth = 1.1;
+        ctx.beginPath();
+        pts.forEach((v,i) => { const x=xAt(i), y=yAt(v); i===0?ctx.moveTo(x,y):ctx.lineTo(x,y); });
+        ctx.stroke();
+      }
+    });
+
+    // confidence band (min/max envelope)
+    if (allPaths.length){
+      const mins = [], maxs = [], meds = [];
+      for(let i=0;i<STEPS;i++){
+        const col = allPaths.map(p=>p[i]).sort((a,b)=>a-b);
+        mins.push(col[0]); maxs.push(col[col.length-1]); meds.push(col[Math.floor(col.length/2)]);
+      }
+      ctx.fillStyle = 'rgba(255,255,255,0.05)';
+      ctx.beginPath();
+      mins.forEach((v,i)=>{ const x=xAt(i), y=yAt(v); i===0?ctx.moveTo(x,y):ctx.lineTo(x,y); });
+      for(let i=STEPS-1;i>=0;i--){ ctx.lineTo(xAt(i), yAt(maxs[i])); }
+      ctx.closePath(); ctx.fill();
+
+      // median
+      ctx.strokeStyle = '#fff'; ctx.lineWidth = 2.4;
+      ctx.beginPath();
+      meds.forEach((v,i)=>{ const x=xAt(i), y=yAt(v); i===0?ctx.moveTo(x,y):ctx.lineTo(x,y); });
+      ctx.stroke();
+    }
+
+    // target threshold line
+    ctx.strokeStyle = 'rgba(255,255,255,0.4)'; ctx.setLineDash([4,5]); ctx.lineWidth = 1.2;
+    const ty = yAt(0.28);
+    ctx.beginPath(); ctx.moveTo(padL, ty); ctx.lineTo(W-padR, ty); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = 'rgba(255,255,255,0.5)';
+    ctx.fillText('TARGET GAP', W-padR-78, ty-6);
+  }
+
+  document.getElementById('runBtn').addEventListener('click', runPipeline);
+  document.addEventListener('keydown', e => { if ((e.metaKey||e.ctrlKey) && e.key==='Enter') runPipeline(); });
+</script>
+
+</body>
+</html>

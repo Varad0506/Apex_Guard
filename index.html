@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ApexGuard — Dashboard</title>
+<link rel="icon" type="image/png" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/favicon-180.png">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<div class="ambient"><div class="grid-lines"></div><div class="scanline"></div></div>
+
+<div class="app-shell">
+  <!-- ================= SIDEBAR ================= -->
+  <aside class="sidebar">
+    <div class="brand"><span class="mark"><img src="assets/logo-mark-white.png" alt="ApexGuard logo" class="mark-logo"></span> ApexGuard</div>
+
+    <div class="nav-label">Live</div>
+    <a href="index.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg> Dashboard</a>
+    <a href="replay.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M10 8.5v7l6-3.5-6-3.5z"/></svg> Race Replay</a>
+    <a href="decide.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg> Decision Engine</a>
+    <a href="simulate.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12h4l2-7 4 14 2-7h6"/></svg> Simulate</a>
+    <a href="beliefs.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3.2"/><path d="M12 3v3.5M12 17.5V21M3 12h3.5M17.5 12H21M5.6 5.6l2.5 2.5M15.9 15.9l2.5 2.5M18.4 5.6l-2.5 2.5M8.1 15.9l-2.5 2.5"/></svg> Opponent Belief</a>
+
+    <a href="ers.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/><circle cx="12" cy="12" r="10" opacity="0.25"/></svg> ERS & Powertrain</a>
+    <div class="nav-label">Analytics</div>
+    <a href="benchmark.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V10M11 20V4M18 20v-7"/></svg> Performance Lab</a>
+    <div class="nav-label">Library</div>
+    <a href="scenarios.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 3v18M5 4h11l-2 4 2 4H5"/></svg> Scenarios</a>
+    <a href="tracks.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 3c2 3 2 15 0 18M3 12c3-2 15-2 18 0"/></svg> Track Library</a>
+
+    <div class="nav-label">System</div>
+    <a href="audits.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg> Audit Trail</a>
+    <a href="health.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12h4l2 6 4-14 2 8h6"/></svg> System Health</a>
+
+    <div class="sidebar-footer">
+      <span class="status-pip"><span class="dot"></span> LIVE</span>
+      <span>v1 · Phase 1</span>
+    </div>
+  </aside>
+
+  <!-- ================= MAIN ================= -->
+  <main class="main">
+    <div class="topbar">
+      <div>
+        <h1>Race Dashboard</h1>
+      </div>
+      <div class="topbar-right">
+        <a href="replay.html" class="btn btn-primary btn-sm" id="demoModeBtn">▶ Run Live Demo</a>
+        <span class="badge badge-green"><span class="dot"></span> ENGINE NOMINAL</span>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <!-- Top stat row -->
+      <div class="grid grid-4 reveal">
+        <div class="glass stat-card">
+          <div class="label">SOC Remaining</div>
+          <div class="value" id="statSoc">—<small>%</small></div>
+          <div class="delta down">▼ 2.1% since last lap</div>
+        </div>
+        <div class="glass stat-card">
+          <div class="label">Gap to Target</div>
+          <div class="value" id="statGap">—<small>s</small></div>
+          <div class="delta up">▲ closing</div>
+        </div>
+        <div class="glass stat-card">
+          <div class="label">Overtake Difficulty</div>
+          <div class="value" id="statDiff">—</div>
+          <div class="delta">Track: DRS Straight</div>
+        </div>
+        <div class="glass stat-card">
+          <div class="label">Decision Latency</div>
+          <div class="value" id="statLat">—<small>ms</small></div>
+          <div class="delta up">▲ within 300ms budget</div>
+        </div>
+      </div>
+
+      <!-- Gauges + recommendation -->
+      <div class="grid grid-3 mt-24">
+        <div class="glass panel reveal">
+          <div class="panel-head"><h3>Ego State of Charge</h3><span class="tag">EGO</span></div>
+          <div class="gauge" id="gaugeSoc" style="--gauge-color:var(--blue)"><div class="val"><b id="gaugeSocVal">0%</b><span>SOC</span></div></div>
+        </div>
+        <div class="glass panel reveal">
+          <div class="panel-head"><h3>Tyre Grip Estimate</h3><span class="tag">EGO</span></div>
+          <div class="gauge" id="gaugeGrip" style="--gauge-color:var(--green)"><div class="val"><b id="gaugeGripVal">0%</b><span>GRIP</span></div></div>
+        </div>
+        <div class="glass panel reveal">
+          <div class="panel-head"><h3>Counterattack Risk</h3><span class="tag">TRAFFIC</span></div>
+          <div class="gauge" id="gaugeRisk" style="--gauge-color:var(--red)"><div class="val"><b id="gaugeRiskVal">0%</b><span>RISK</span></div></div>
+        </div>
+      </div>
+
+      <!-- Recommendation banner -->
+      <div class="glass panel mt-24 reveal" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;">
+        <div>
+          <div class="panel-head" style="margin-bottom:8px;"><span class="tag">LIVE RECOMMENDATION</span></div>
+          <div style="font-size:26px; font-weight:800; letter-spacing:-0.02em;" id="recAction">PARTIAL_DEPLOY</div>
+          <p class="text-muted small mt-8" id="recExplanation" style="max-width:520px;">Verifier downgraded full deploy — counterattack risk from rear traffic is high enough to erase the net time gain.</p>
+        </div>
+        <div class="flex gap-12">
+          <span class="badge badge-amber"><span class="dot"></span> RISK: MEDIUM</span>
+          <a href="decide.html" class="btn btn-primary">Open Decision Engine →</a>
+        </div>
+      </div>
+
+      <!-- Race Engineer command panel -->
+      <div class="glass panel mt-24 reveal race-engineer">
+        <div class="re-head">
+          <span class="re-avatar">AG</span>
+          <div>
+            <div class="re-title">APEXGUARD RACE ENGINEER</div>
+            <div class="re-sub" id="reWarning">⚠ Target is harvesting</div>
+          </div>
+        </div>
+        <p class="re-body" id="reBody">
+          Your closing speed increased <b>7.2 km/h</b>. Opponent likely has low-drag available.
+        </p>
+        <div class="re-stat-row">
+          <span>Counter-harvest probability: <b class="re-hl">71%</b></span>
+          <span class="re-sep">·</span>
+          <span><span style="color:var(--red);">FULL DEPLOY</span> rejected</span>
+          <span class="re-sep">·</span>
+          <span><span style="color:var(--green);">PARTIAL DEPLOY</span> selected</span>
+        </div>
+        <div class="re-footer">
+          <span>Expected gain: <b class="re-hl-green">+0.18s</b></span>
+          <span>Reserve after action: <b>34%</b></span>
+        </div>
+      </div>
+
+      <!-- Recent activity + track profile -->
+      <div class="grid grid-2 mt-24">
+        <div class="glass panel reveal">
+          <div class="panel-head"><h3>Recent Decisions</h3><a href="audits.html" class="tag" style="color:var(--red);">View all →</a></div>
+          <table class="data-table" id="recentTable">
+            <thead><tr><th>Time</th><th>Action</th><th>Confidence</th><th>Status</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div class="glass panel reveal">
+          <div class="panel-head"><h3>Deployment Budget</h3><span class="tag">RULES</span></div>
+          <div class="mt-8">
+            <div class="field"><label>Energy budget remaining <b id="budgetLabel">0 / 2000 kJ</b></label><div class="meter"><i id="budgetMeter"></i></div></div>
+            <div class="field"><label>Minimum reserve SOC <b>15%</b></label><div class="meter"><i style="width:15%; background:var(--muted-2);"></i></div></div>
+            <div class="field" style="margin-bottom:0;"><label>Laps remaining <b id="lapsLabel">—</b></label><div class="meter"><i id="lapsMeter" style="background:linear-gradient(90deg, var(--green), var(--blue));"></i></div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script src="assets/app.js"></script>
+<script>
+  // Mock live telemetry — purely presentational, not connected to any backend
+  const mock = {
+    soc: 46, gap: 0.55, difficulty: 0.65, latency: 11.8,
+    grip: 0.78, counterattackRisk: 0.79, budget: 1800, budgetMax: 2000, laps: 10, lapsMax: 24
+  };
+
+  countUp(document.getElementById('statSoc'), mock.soc, {decimals:0});
+  countUp(document.getElementById('statGap'), mock.gap, {decimals:2});
+  document.getElementById('statDiff').textContent = mock.difficulty.toFixed(2);
+  countUp(document.getElementById('statLat'), mock.latency, {decimals:1});
+
+  animateGauge(document.getElementById('gaugeSoc'), mock.soc);
+  countUp(document.getElementById('gaugeSocVal'), mock.soc, {suffix:'%'});
+  animateGauge(document.getElementById('gaugeGrip'), mock.grip*100);
+  countUp(document.getElementById('gaugeGripVal'), mock.grip*100, {suffix:'%'});
+  animateGauge(document.getElementById('gaugeRisk'), mock.counterattackRisk*100);
+  countUp(document.getElementById('gaugeRiskVal'), mock.counterattackRisk*100, {suffix:'%'});
+
+  document.getElementById('budgetLabel').textContent = `${mock.budget} / ${mock.budgetMax} kJ`;
+  animateMeter(document.getElementById('budgetMeter'), (mock.budget/mock.budgetMax)*100);
+  document.getElementById('lapsLabel').textContent = `${mock.laps} of ${mock.lapsMax}`;
+  animateMeter(document.getElementById('lapsMeter'), (mock.laps/mock.lapsMax)*100);
+
+  const recent = [
+    { t: '-00:04', action:'PARTIAL_DEPLOY', conf: 1.0, status:'OK' },
+    { t: '-00:22', action:'HOLD', conf: 0.86, status:'SAFE_HOLD' },
+    { t: '-00:41', action:'HARVEST', conf: 1.0, status:'OK' },
+    { t: '-01:03', action:'FULL_DEPLOY', conf: 0.91, status:'OK' },
+  ];
+  const badgeFor = s => s === 'OK' ? 'badge-green' : s === 'SAFE_HOLD' ? 'badge-amber' : 'badge-red';
+  const tbody = document.querySelector('#recentTable tbody');
+  recent.forEach(r => {
+    const tr = document.createElement('tr');
+    tr.onclick = () => window.location.href = 'audits.html';
+    tr.innerHTML = `<td class="mono text-muted">${r.t}</td><td>${r.action}</td><td class="mono">${r.conf.toFixed(2)}</td><td><span class="badge ${badgeFor(r.status)}"><span class="dot"></span>${r.status}</span></td>`;
+    tbody.appendChild(tr);
+  });
+</script>
+
+</body>
+</html>

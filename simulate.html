@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ApexGuard — Simulate</title>
+<link rel="icon" type="image/png" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/favicon-180.png">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .rollout-canvas-wrap{ position:relative; height:280px; border-radius:12px; overflow:hidden; background:rgba(255,255,255,0.02); border:1px solid var(--line); }
+  #rolloutCanvas{ width:100%; height:100%; display:block; }
+</style>
+</head>
+<body>
+
+<div class="ambient"><div class="grid-lines"></div><div class="scanline"></div></div>
+
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand"><span class="mark"><img src="assets/logo-mark-white.png" alt="ApexGuard logo" class="mark-logo"></span> ApexGuard</div>
+    <div class="nav-label">Live</div>
+    <a href="index.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg> Dashboard</a>
+    <a href="replay.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M10 8.5v7l6-3.5-6-3.5z"/></svg> Race Replay</a>
+    <a href="decide.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg> Decision Engine</a>
+    <a href="simulate.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12h4l2-7 4 14 2-7h6"/></svg> Simulate</a>
+    <a href="beliefs.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3.2"/><path d="M12 3v3.5M12 17.5V21M3 12h3.5M17.5 12H21M5.6 5.6l2.5 2.5M15.9 15.9l2.5 2.5M18.4 5.6l-2.5 2.5M8.1 15.9l-2.5 2.5"/></svg> Opponent Belief</a>
+    <a href="ers.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/><circle cx="12" cy="12" r="10" opacity="0.25"/></svg> ERS & Powertrain</a>
+    <div class="nav-label">Analytics</div>
+    <a href="benchmark.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V10M11 20V4M18 20v-7"/></svg> Performance Lab</a>
+    <div class="nav-label">Library</div>
+    <a href="scenarios.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 3v18M5 4h11l-2 4 2 4H5"/></svg> Scenarios</a>
+    <a href="tracks.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 3c2 3 2 15 0 18M3 12c3-2 15-2 18 0"/></svg> Track Library</a>
+    <div class="nav-label">System</div>
+    <a href="audits.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg> Audit Trail</a>
+    <a href="health.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12h4l2 6 4-14 2 8h6"/></svg> System Health</a>
+    <div class="sidebar-footer"><span class="status-pip"><span class="dot"></span> LIVE</span><span>v1 · Phase 1</span></div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div><h1>Monte Carlo Simulate</h1></div>
+      <div class="topbar-right"><span class="badge badge-blue"><span class="dot"></span> rollout_verified()</span></div>
+    </div>
+
+    <div class="content">
+      <div class="grid grid-2" style="align-items:start;">
+
+        <div class="glass panel reveal">
+          <div class="panel-head"><h3>Rollout Parameters</h3><span class="tag">SINGLE ACTION</span></div>
+
+          <div class="field">
+            <label>Action</label>
+            <select id="actionSelect">
+              <option value="HOLD">HOLD</option>
+              <option value="HARVEST">HARVEST</option>
+              <option value="PARTIAL_DEPLOY" selected>PARTIAL_DEPLOY</option>
+              <option value="FULL_DEPLOY">FULL_DEPLOY</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Horizon (ticks) <b id="lblHorizon">24</b></label>
+            <input type="range" id="inHorizon" min="6" max="48" value="24">
+          </div>
+          <div class="field">
+            <label>Monte Carlo paths <b id="lblPaths">30</b></label>
+            <input type="range" id="inPaths" min="5" max="80" value="30">
+          </div>
+          <div class="field" style="margin-bottom:10px;">
+            <label>Track overtake difficulty <b id="lblDiff2">0.65</b></label>
+            <input type="range" id="inDiff2" min="20" max="88" value="65">
+          </div>
+
+          <button class="btn btn-primary btn-block mt-24" id="runSimBtn">Run Rollout</button>
+          
+        </div>
+
+        <div class="glass panel reveal">
+          <div class="panel-head"><h3>Simulated Paths</h3><span class="tag" id="simStatus">IDLE</span></div>
+          <div class="rollout-canvas-wrap"><canvas id="rolloutCanvas"></canvas></div>
+          <div class="grid grid-3 mt-16">
+            <div><div class="small text-muted mono">PASS PROBABILITY</div><div style="font-size:19px;font-weight:700;" id="simPass">—</div></div>
+            <div><div class="small text-muted mono">PROJECTED SOC</div><div style="font-size:19px;font-weight:700;" id="simSoc">—</div></div>
+            <div><div class="small text-muted mono">CONFIDENCE</div><div style="font-size:19px;font-weight:700;" id="simConf">—</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass panel mt-24 reveal">
+        <div class="panel-head"><h3>FAST vs VERIFIED</h3><span class="tag">LATENCY COMPARISON</span></div>
+        <table class="data-table">
+          <thead><tr><th>Mode</th><th>Recommended</th><th>Confidence</th><th>Pass Prob.</th><th>Counterattack</th><th>Mean Latency</th><th>P95 Latency</th></tr></thead>
+          <tbody>
+            <tr><td><span class="badge badge-blue"><span class="dot"></span>FAST</span></td><td>PARTIAL_DEPLOY</td><td class="mono">0.72</td><td class="mono">0.42</td><td class="mono">0.79</td><td class="mono">3.7ms</td><td class="mono">3.8ms</td></tr>
+            <tr><td><span class="badge badge-green"><span class="dot"></span>VERIFIED</span></td><td>PARTIAL_DEPLOY</td><td class="mono">1.00</td><td class="mono">1.00</td><td class="mono">0.79</td><td class="mono">11.8ms</td><td class="mono">12.2ms</td></tr>
+          </tbody>
+        </table>
+        
+      </div>
+
+      <!-- ===== BACKTESTS ===== -->
+      <div class="glass panel mt-24 reveal">
+        <div class="panel-head"><h3>Historical Backtests</h3><span class="tag">GET /v1/backtests · POST /v1/backtests/run</span></div>
+        <p class="small text-muted">Replays FastF1/OpenF1-derived frames through the real decision stack and aggregates decision/energy/safety metrics. Public telemetry doesn't expose true hidden state (e.g. actual battery SOC), so these are decision-metrics, not counterfactual ground truth.</p>
+        <table class="data-table mt-16">
+          <thead><tr><th>Replay</th><th>Frames</th><th>Aggressive %</th><th>Rule compliant %</th><th>Fallback %</th><th>Mean latency</th></tr></thead>
+          <tbody id="backtestBody"></tbody>
+        </table>
+      </div>
+
+      <!-- ===== QUANTUM-INSPIRED ===== -->
+      <div class="glass panel mt-24 reveal">
+        <div class="panel-head"><h3>Quantum-Inspired Estimator</h3><span class="tag">POST /v1/simulate/quantum-inspired</span></div>
+        <p class="small text-muted">Re-expresses this page's classical Monte Carlo distribution as amplitude-like weights (α = √p) for visualization only — no quantum hardware or QAE speedup is claimed. Full interactive version, alongside ERS tactical advisory and powertrain mode classification, lives on the <a href="ers.html">ERS &amp; Powertrain</a> page.</p>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="assets/app.js"></script>
+<script>
+  // Illustrative backtest summary rows — shape mirrors app/evaluation/backtest.py's
+  // real aggregate output (frames, aggressive-action %, rule-compliance %,
+  // fallback %, mean latency) for the three curated replay scenarios.
+  const backtestRows = [
+    { replay:'isolated_pass',   frames:180, aggressive:71, compliant:100, fallback:2,  latency:'11.9ms' },
+    { replay:'rear_drs_threat', frames:180, aggressive:54, compliant:100, fallback:4,  latency:'12.1ms' },
+    { replay:'low_soc_guard',   frames:180, aggressive:6,  compliant:100, fallback:1,  latency:'9.4ms' },
+  ];
+  document.getElementById('backtestBody').innerHTML = backtestRows.map(r => `
+    <tr>
+      <td class="mono">${r.replay}</td>
+      <td class="mono">${r.frames}</td>
+      <td class="mono">${r.aggressive}%</td>
+      <td class="mono" style="color:var(--green)">${r.compliant}%</td>
+      <td class="mono">${r.fallback}%</td>
+      <td class="mono">${r.latency}</td>
+    </tr>`).join('');
+
+  const inHorizon = document.getElementById('inHorizon'), lblHorizon = document.getElementById('lblHorizon');
+  const inPaths = document.getElementById('inPaths'), lblPaths = document.getElementById('lblPaths');
+  const inDiff2 = document.getElementById('inDiff2'), lblDiff2 = document.getElementById('lblDiff2');
+  [inHorizon, inPaths, inDiff2].forEach(el => el.addEventListener('input', syncLabels));
+  function syncLabels(){
+    lblHorizon.textContent = inHorizon.value;
+    lblPaths.textContent = inPaths.value;
+    lblDiff2.textContent = (inDiff2.value/100).toFixed(2);
+    [inHorizon, inPaths, inDiff2].forEach(el => el.style.setProperty('--fill', ((el.value-el.min)/(el.max-el.min)*100)+'%'));
+  }
+  syncLabels();
+
+  const canvas = document.getElementById('rolloutCanvas');
+  const ctx = canvas.getContext('2d');
+  function fitCanvas(){
+    const rect = canvas.parentElement.getBoundingClientRect();
+    canvas.width = rect.width * devicePixelRatio;
+    canvas.height = rect.height * devicePixelRatio;
+    ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);
+  }
+  window.addEventListener('resize', fitCanvas);
+  fitCanvas();
+
+  function drawGrid(w,h){
+    ctx.strokeStyle = 'rgba(255,255,255,0.06)';
+    ctx.lineWidth = 1;
+    for (let x=0; x<=w; x+=w/8){ ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,h); ctx.stroke(); }
+    for (let y=0; y<=h; y+=h/4){ ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(w,y); ctx.stroke(); }
+  }
+
+  let animId = null;
+  function runRollout(){
+    cancelAnimationFrame(animId);
+    document.getElementById('simStatus').textContent = 'RUNNING…';
+    const horizon = +inHorizon.value, paths = Math.min(+inPaths.value, 60), diff = +inDiff2.value/100;
+    const action = document.getElementById('actionSelect').value;
+    const w = canvas.width/devicePixelRatio, h = canvas.height/devicePixelRatio;
+
+    const aggression = { HOLD:0.05, HARVEST:0.1, PARTIAL_DEPLOY:0.55, FULL_DEPLOY:0.9 }[action];
+    const pathData = [];
+    let passCount = 0;
+    for (let p=0; p<paths; p++){
+      const noise = () => (Math.random()-0.5);
+      const pts = [];
+      let gap = 1 - aggression*0.6;
+      let passed = false;
+      for (let t=0; t<=horizon; t++){
+        const progress = t/horizon;
+        gap -= (aggression * (1-diff) * 0.055) + noise()*0.02;
+        gap = Math.max(-0.15, gap);
+        if (gap <= 0 && !passed && Math.random() > diff*0.4) passed = true;
+        pts.push(gap);
+      }
+      if (passed) passCount++;
+      pathData.push({ pts, passed });
+    }
+    const passProbability = passCount/paths;
+    const projectedSoc = Math.max(5, 46 - aggression*22 - diff*4);
+    const agreement = 1 - Math.min(0.4, pathData.reduce((a,p,_,arr)=> a + Math.abs((p.passed?1:0) - passProbability), 0)/paths);
+
+    let frame = 0;
+    const totalFrames = 60;
+    function animate(){
+      ctx.clearRect(0,0,w,h);
+      drawGrid(w,h);
+      const revealFrac = Math.min(1, frame/totalFrames);
+      pathData.forEach((p, i) => {
+        const n = Math.max(2, Math.floor(p.pts.length * revealFrac));
+        ctx.beginPath();
+        ctx.strokeStyle = p.passed ? 'rgba(61,220,132,0.55)' : 'rgba(232,35,43,0.35)';
+        ctx.lineWidth = p.passed ? 1.6 : 1;
+        for (let t=0; t<n; t++){
+          const x = (t/(p.pts.length-1))*w;
+          const y = h/2 - p.pts[t]*h/2.4;
+          if (t===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+        }
+        ctx.stroke();
+      });
+      // zero line = "pass" threshold
+      ctx.strokeStyle = 'rgba(255,255,255,0.25)';
+      ctx.setLineDash([4,4]);
+      ctx.beginPath(); ctx.moveTo(0, h/2); ctx.lineTo(w, h/2); ctx.stroke();
+      ctx.setLineDash([]);
+
+      frame++;
+      if (frame <= totalFrames) animId = requestAnimationFrame(animate);
+      else {
+        document.getElementById('simStatus').textContent = `${paths} PATHS · DONE`;
+        countUp(document.getElementById('simPass'), passProbability*100, {decimals:1, suffix:'%'});
+        countUp(document.getElementById('simSoc'), projectedSoc, {decimals:1, suffix:'%'});
+        countUp(document.getElementById('simConf'), agreement*100, {decimals:1, suffix:'%'});
+      }
+    }
+    animate();
+  }
+
+  document.getElementById('runSimBtn').addEventListener('click', runRollout);
+  window.addEventListener('load', runRollout);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ApexGuard — Track Library</title>
+<link rel="icon" type="image/png" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/favicon-180.png">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<div class="ambient"><div class="grid-lines"></div><div class="scanline"></div></div>
+
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand"><span class="mark"><img src="assets/logo-mark-white.png" alt="ApexGuard logo" class="mark-logo"></span> ApexGuard</div>
+    <div class="nav-label">Live</div>
+    <a href="index.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg> Dashboard</a>
+    <a href="replay.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M10 8.5v7l6-3.5-6-3.5z"/></svg> Race Replay</a>
+    <a href="decide.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg> Decision Engine</a>
+    <a href="simulate.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12h4l2-7 4 14 2-7h6"/></svg> Simulate</a>
+    <a href="beliefs.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3.2"/><path d="M12 3v3.5M12 17.5V21M3 12h3.5M17.5 12H21M5.6 5.6l2.5 2.5M15.9 15.9l2.5 2.5M18.4 5.6l-2.5 2.5M8.1 15.9l-2.5 2.5"/></svg> Opponent Belief</a>
+    <a href="ers.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/><circle cx="12" cy="12" r="10" opacity="0.25"/></svg> ERS & Powertrain</a>
+    <div class="nav-label">Analytics</div>
+    <a href="benchmark.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V10M11 20V4M18 20v-7"/></svg> Performance Lab</a>
+    <div class="nav-label">Library</div>
+    <a href="scenarios.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 3v18M5 4h11l-2 4 2 4H5"/></svg> Scenarios</a>
+    <a href="tracks.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 3c2 3 2 15 0 18M3 12c3-2 15-2 18 0"/></svg> Track Library</a>
+    <div class="nav-label">System</div>
+    <a href="audits.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg> Audit Trail</a>
+    <a href="health.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12h4l2 6 4-14 2 8h6"/></svg> System Health</a>
+    <div class="sidebar-footer"><span class="status-pip"><span class="dot"></span> LIVE</span><span>v1 · Phase 1</span></div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div><h1>Track Library</h1></div>
+      <div class="topbar-right"><span class="badge badge-blue"><span class="dot"></span> HOLDOUT-TESTED</span></div>
+    </div>
+
+    <div class="content">
+      <div class="grid grid-3" id="trackGrid"></div>
+
+      <!-- ===== TRACK DETAIL ===== -->
+      <div class="glass panel mt-24 reveal" id="trackDetail" style="display:none;">
+        <div class="panel-head"><h3 id="detailName">—</h3><span class="tag" id="detailId">—</span></div>
+        <div class="grid grid-2" style="align-items:start;">
+          <div class="track-detail-stage">
+            <svg viewBox="0 0 520 340" id="detailSvg"></svg>
+          </div>
+          <div>
+            <p class="small text-muted" id="detailNote"></p>
+            <div class="mt-16">
+              <div class="field" style="margin-bottom:12px;">
+                <label>Overtake difficulty <b id="detailDiffVal">—</b></label>
+                <div class="meter"><i id="detailDiffBar" style="width:0%;"></i></div>
+              </div>
+            </div>
+            <div class="track-legend mt-16">
+              <span><i style="background:var(--green)"></i> DRS zone</span>
+              <span><i style="background:var(--red)"></i> Braking zone</span>
+              <span><i style="background:var(--blue)"></i> Overtake zone</span>
+              <span><i class="bolt">⚡</i> Deploy opportunity</span>
+            </div>
+            <div class="grid grid-2 mt-24">
+              <div><div class="small text-muted mono">DRS ZONES</div><div style="font-size:19px; font-weight:700;" id="detailDrsN">—</div></div>
+              <div><div class="small text-muted mono">BRAKING ZONES</div><div style="font-size:19px; font-weight:700;" id="detailBrakeN">—</div></div>
+              <div><div class="small text-muted mono">TRAFFIC DENSITY</div><div style="font-size:19px; font-weight:700;" id="detailTraffic">—</div></div>
+              <div><div class="small text-muted mono">DEPLOY OPPORTUNITIES</div><div style="font-size:19px; font-weight:700;" id="detailDeploy">—</div></div>
+              <div><div class="small text-muted mono">LAP LENGTH</div><div style="font-size:19px; font-weight:700;" id="detailLapLen">—</div></div>
+              <div><div class="small text-muted mono">AVG BRAKING ZONE</div><div style="font-size:19px; font-weight:700;" id="detailBrakeM">—</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="assets/app.js"></script>
+<script>
+  // Sourced directly from app/simulation/tracks.py's _PROFILE_SEEDS — the
+  // 10 synthetic track profiles the backend actually generates and serves
+  // (drs_zone_count, avg_braking_zone_m, corner_density, overtake_difficulty,
+  // lap_length_m). Names/notes are display labels for the same archetypes;
+  // ids and stats are exact.
+  const tracks = [
+    { id:'synth_extreme_high_speed_01', name:'Extreme High Speed 01', difficulty:0.20, drs:2, lap_m:7000, brake_m:130, note:'Longest straights in the library (up to 1150m) — minimal braking, huge DRS effect.' },
+    { id:'synth_power_circuit_01', name:'Power Circuit 01', difficulty:0.25, drs:3, lap_m:5900, brake_m:150, note:'Power-sensitive layout with 3 DRS zones and low corner density.' },
+    { id:'synth_high_speed_02', name:'High Speed 02', difficulty:0.30, drs:3, lap_m:6200, brake_m:145, note:'Three DRS zones across long straights — easiest passing in the field.' },
+    { id:'synth_high_speed_01', name:'High Speed 01', difficulty:0.35, drs:2, lap_m:5800, brake_m:140, note:'High-speed archetype with generous straight-line overtake windows.' },
+    { id:'synth_balanced_01', name:'Balanced 01', difficulty:0.50, drs:2, lap_m:5300, brake_m:132, note:'Even mix of straights and corners — the field-average overtake difficulty.' },
+    { id:'synth_balanced_02', name:'Balanced 02', difficulty:0.53, drs:2, lap_m:5250, brake_m:138, note:'Slightly tighter braking zones than Balanced 01, similar corner density.' },
+    { id:'synth_technical_mixed_02', name:'Technical Mixed 02', difficulty:0.60, drs:2, lap_m:5100, brake_m:128, note:'Technical layout, moderate corner density, 2 DRS zones.' },
+    { id:'synth_technical_mixed_01', name:'Technical Mixed 01', difficulty:0.65, drs:2, lap_m:4900, brake_m:120, note:'DRS straight into a tight braking zone — the rear-DRS-threat archetype.' },
+    { id:'synth_low_speed_street_02', name:'Low Speed Street 02', difficulty:0.82, drs:1, lap_m:3600, brake_m:105, note:'Single DRS zone, dense low-speed corners — passing is hard-won.' },
+    { id:'synth_low_speed_street_01', name:'Low Speed Street 01', difficulty:0.88, drs:1, lap_m:3300, brake_m:95, note:'Tightest street circuit in the library — highest overtake difficulty.' },
+  ];
+
+  function diffColor(d){ return d < 0.4 ? 'var(--green)' : d < 0.65 ? 'var(--amber)' : 'var(--red)'; }
+  function diffLabel(d){ return d < 0.4 ? 'EASY PASS' : d < 0.65 ? 'MODERATE' : 'HARD PASS'; }
+
+  const grid = document.getElementById('trackGrid');
+  tracks.forEach((t, i) => {
+    const card = document.createElement('div');
+    card.className = 'glass card hoverable reveal';
+    card.innerHTML = `
+      <div class="flex justify-between items-center">
+        <h4>${t.name}</h4>
+        <span class="mono small text-muted">#${String(i+1).padStart(2,'0')}</span>
+      </div>
+      <p class="mono small text-muted mt-8">${t.id}</p>
+      <p class="mt-16">${t.note}</p>
+      <div class="mt-16">
+        <div class="field" style="margin-bottom:0;">
+          <label>Overtake difficulty <b style="color:${diffColor(t.difficulty)}">${t.difficulty.toFixed(2)}</b></label>
+          <div class="meter"><i style="width:0%; background:${diffColor(t.difficulty)};" data-target="${t.difficulty*100}"></i></div>
+        </div>
+      </div>
+      <div class="card-foot">
+        <span class="badge ${t.difficulty<0.4?'badge-green':t.difficulty<0.65?'badge-amber':'badge-red'}"><span class="dot"></span>${diffLabel(t.difficulty)}</span>
+      </div>`;
+    card.addEventListener('click', () => openDetail(t, i));
+    grid.appendChild(card);
+  });
+
+  // animate meters in after render, staggered
+  document.querySelectorAll('#trackGrid .meter i').forEach((el, i) => {
+    setTimeout(() => { el.style.width = el.dataset.target + '%'; }, 200 + i*80);
+  });
+
+  // ---------- Track detail: procedural circuit + zone overlay ----------
+  function seededRandom(seed){
+    let s = seed % 2147483647; if (s <= 0) s += 2147483646;
+    return () => { s = (s * 16807) % 2147483647; return (s - 1) / 2147483646; };
+  }
+
+  function hashSeed(str){
+    let h = 0;
+    for (let i=0;i<str.length;i++){ h = (h*31 + str.charCodeAt(i)) | 0; }
+    return Math.abs(h) || 1;
+  }
+
+  function generateTrackPath(seed){
+    const rand = seededRandom(seed);
+    const cx = 260, cy = 170, baseR = 120;
+    const points = 9;
+    let d = '';
+    const pts = [];
+    for (let i=0;i<points;i++){
+      const angle = (i/points) * Math.PI*2;
+      const r = baseR * (0.55 + rand()*0.5);
+      pts.push([cx + Math.cos(angle)*r*1.5, cy + Math.sin(angle)*r]);
+    }
+    d = `M${pts[0][0].toFixed(1)},${pts[0][1].toFixed(1)} `;
+    for (let i=1;i<=points;i++){
+      const p = pts[i % points];
+      const prev = pts[(i-1) % points];
+      const cx1 = prev[0] + (p[0]-prev[0])*0.3 + (rand()-0.5)*30;
+      const cy1 = prev[1] + (p[1]-prev[1])*0.3 + (rand()-0.5)*30;
+      d += `Q${cx1.toFixed(1)},${cy1.toFixed(1)} ${p[0].toFixed(1)},${p[1].toFixed(1)} `;
+    }
+    d += 'Z';
+    return d;
+  }
+
+  function openDetail(t, i){
+    document.getElementById('trackDetail').style.display = 'block';
+    document.getElementById('detailName').textContent = t.name;
+    document.getElementById('detailId').textContent = t.id;
+    document.getElementById('detailNote').textContent = t.note;
+    document.getElementById('detailDiffVal').innerHTML = `<span style="color:${diffColor(t.difficulty)}">${t.difficulty.toFixed(2)}</span>`;
+    const bar = document.getElementById('detailDiffBar');
+    bar.style.background = diffColor(t.difficulty);
+    bar.style.width = '0%';
+    setTimeout(() => { bar.style.width = (t.difficulty*100) + '%'; }, 60);
+
+    const seed = hashSeed(t.id);
+    const rand = seededRandom(seed + 99);
+    const d = generateTrackPath(seed);
+
+    const svg = document.getElementById('detailSvg');
+    svg.innerHTML = `
+      <path id="detailPath" d="${d}" fill="none" stroke="rgba(255,255,255,0.14)" stroke-width="14" stroke-linejoin="round"/>
+      <path d="${d}" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1" stroke-dasharray="2 10"/>
+    `;
+    const pathEl = document.getElementById('detailPath');
+    const total = pathEl.getTotalLength();
+
+    // drsN comes straight from the backend's drs_zone_count for this track.
+    // brakeN/deployN are derived (the backend only stores avg_braking_zone_m,
+    // not a fixed zone count) using the same harder-track-more-braking shape.
+    const drsN = t.drs;
+    const brakeN = t.difficulty < 0.4 ? 2 : t.difficulty < 0.65 ? 3 : 5;
+    const deployN = drsN + (t.difficulty < 0.5 ? 1 : 0);
+
+    function segAt(frac, len){
+      const p1 = pathEl.getPointAtLength(((frac)%1)*total);
+      const p2 = pathEl.getPointAtLength(((frac+len)%1)*total);
+      return `M${p1.x.toFixed(1)},${p1.y.toFixed(1)} L${p2.x.toFixed(1)},${p2.y.toFixed(1)}`;
+    }
+
+    let overlay = '';
+    for (let i=0;i<drsN;i++){
+      const start = rand();
+      overlay += `<path d="${segAt(start, 0.09)}" fill="none" stroke="var(--green)" stroke-width="4" stroke-linecap="round" opacity="0.6"/>`;
+    }
+    for (let i=0;i<brakeN;i++){
+      const start = rand();
+      overlay += `<path d="${segAt(start, 0.035)}" fill="none" stroke="var(--red)" stroke-width="5" stroke-linecap="round" opacity="0.55"/>`;
+    }
+    // one overtake / attack zone
+    const atkStart = rand();
+    overlay += `<path d="${segAt(atkStart, 0.06)}" fill="none" stroke="var(--blue)" stroke-width="4" stroke-linecap="round" opacity="0.55" stroke-dasharray="1 7"/>`;
+    // deploy opportunity markers (bolts) on straights
+    for (let i=0;i<deployN;i++){
+      const p = pathEl.getPointAtLength(rand()*total);
+      overlay += `<text x="${p.x.toFixed(1)}" y="${p.y.toFixed(1)}" class="deploy-bolt" text-anchor="middle">⚡</text>`;
+    }
+    // ego / target position dots
+    const egoP = pathEl.getPointAtLength(0.12*total);
+    const targetP = pathEl.getPointAtLength(0.22*total);
+    overlay += `<circle cx="${egoP.x.toFixed(1)}" cy="${egoP.y.toFixed(1)}" r="6" class="detail-dot ego"/>`;
+    overlay += `<circle cx="${targetP.x.toFixed(1)}" cy="${targetP.y.toFixed(1)}" r="5.5" class="detail-dot target"/>`;
+
+    svg.innerHTML += overlay;
+
+    document.getElementById('detailDrsN').textContent = drsN;
+    document.getElementById('detailBrakeN').textContent = brakeN;
+    document.getElementById('detailDeploy').textContent = deployN;
+    document.getElementById('detailLapLen').textContent = `${t.lap_m.toLocaleString()} m`;
+    document.getElementById('detailBrakeM').textContent = `${t.brake_m} m`;
+    const trafficLevel = t.difficulty > 0.65 ? 'HIGH' : t.difficulty > 0.4 ? 'MODERATE' : 'LOW';
+    document.getElementById('detailTraffic').textContent = trafficLevel;
+
+    document.getElementById('trackDetail').scrollIntoView({ behavior:'smooth', block:'nearest' });
+  }
+</script>
+
+</body>
+</html>

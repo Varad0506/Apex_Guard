@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ApexGuard — Real-time Race Strategy Intelligence</title>
+<link rel="icon" type="image/png" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/favicon-180.png">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body class="landing">
+
+<div class="ambient"><div class="grid-lines"></div><div class="scanline"></div></div>
+
+<!-- ================= NAV ================= -->
+<nav class="land-nav" id="landNav">
+  <div class="brand"><span class="mark"><img src="assets/logo-mark-white.png" alt="ApexGuard logo" class="mark-logo"></span> ApexGuard</div>
+  <div class="links">
+    <a href="#features">Platform</a>
+    <a href="#pipeline">How it works</a>
+    <a href="index.html">Dashboard</a>
+  </div>
+  <a href="index.html" class="btn btn-primary btn-sm">Launch App →</a>
+</nav>
+
+<!-- ================= HERO (scroll-scrubbed cockpit sequence) ================= -->
+<div class="hero-scrub">
+  <div class="hero-stage">
+    <canvas id="heroCanvas"></canvas>
+    <div class="grid-lines"></div>
+
+    <div class="hero-scrollcue" id="heroScrollCue"><span class="wheel"></span></div>
+    <div class="hero-progress"><i id="heroProgress"></i></div>
+  </div>
+</div>
+
+<!-- ================= FEATURES ================= -->
+<section class="land-section" id="features">
+  <div class="section-head reveal">
+    <span class="section-tag">Platform</span>
+    <h2>Built for the 300ms window that decides the race.</h2>
+    <p>ApexGuard fuses ego-car telemetry, tyre and energy models, and rival trajectory prediction into a single verified recommendation — HOLD, HARVEST, PARTIAL_DEPLOY, or FULL_DEPLOY.</p>
+  </div>
+
+  <div class="feature-grid">
+    <div class="glass card feature-card reveal">
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg></div>
+      <h4>Decision Engine</h4>
+      <p>A live recommendation with a plain-language explanation, downgraded automatically when counterattack risk outweighs the time gain.</p>
+    </div>
+    <div class="glass card feature-card reveal">
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12h4l2-7 4 14 2-7h6"/></svg></div>
+      <h4>Scenario Simulation</h4>
+      <p>Run the next ten laps forward under different deploy strategies before committing energy you can't get back.</p>
+    </div>
+    <div class="glass card feature-card reveal">
+      <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+      <h4>Full Audit Trail</h4>
+      <p>Every recommendation, override, and verifier downgrade logged with confidence scores — nothing decided off the record.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PIPELINE ================= -->
+<section class="land-section" id="pipeline">
+  <div class="section-head reveal">
+    <span class="section-tag">How it works</span>
+    <h2>Telemetry in. A verified call out.</h2>
+  </div>
+
+  <div class="glass panel reveal">
+    <div class="pipeline">
+      <div class="pipe-step done">
+        <div class="rail"><div class="node">1</div><div class="line"></div></div>
+        <div class="body"><h5>Ingest live telemetry</h5><p>SOC, tyre grip, gap, and rival positions streamed in every tick.</p></div>
+      </div>
+      <div class="pipe-step done">
+        <div class="rail"><div class="node">2</div><div class="line"></div></div>
+        <div class="body"><h5>Simulate the counterattack</h5><p>Model how the field responds to each candidate deploy strategy.</p></div>
+      </div>
+      <div class="pipe-step active">
+        <div class="rail"><div class="node">3</div><div class="line"></div></div>
+        <div class="body"><h5>Verify against the rulebook</h5><p>Energy budget, minimum reserve SOC, and risk thresholds checked before anything ships.</p></div>
+      </div>
+      <div class="pipe-step pending">
+        <div class="rail"><div class="node">4</div></div>
+        <div class="body"><h5>Deliver the call</h5><p>One action, one confidence score, one explanation — in the driver's ear inside 300ms.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="land-section" style="padding-top:0;">
+  <div class="glass panel reveal" style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:24px; padding:40px;">
+    <div>
+      <h2 style="font-size:24px;">Ready to see it live?</h2>
+      <p class="text-muted small mt-8" style="max-width:420px;">Jump straight into the race dashboard with a running demo session.</p>
+    </div>
+    <a href="index.html" class="btn btn-primary">Open Dashboard →</a>
+  </div>
+</section>
+
+<footer class="land-footer">
+  <span>© 2026 ApexGuard · Demo build, not connected to a live backend.</span>
+  <span class="mono">v1 · Phase 1</span>
+</footer>
+
+<script src="assets/app.js"></script>
+<script src="assets/hero-scrub.js"></script>
+</body>
+</html>

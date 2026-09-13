@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ApexGuard — System Health</title>
+<link rel="icon" type="image/png" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/favicon-180.png">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<div class="ambient"><div class="grid-lines"></div><div class="scanline"></div></div>
+
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand"><span class="mark"><img src="assets/logo-mark-white.png" alt="ApexGuard logo" class="mark-logo"></span> ApexGuard</div>
+    <div class="nav-label">Live</div>
+    <a href="index.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg> Dashboard</a>
+    <a href="replay.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M10 8.5v7l6-3.5-6-3.5z"/></svg> Race Replay</a>
+    <a href="decide.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg> Decision Engine</a>
+    <a href="simulate.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12h4l2-7 4 14 2-7h6"/></svg> Simulate</a>
+    <a href="beliefs.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3.2"/><path d="M12 3v3.5M12 17.5V21M3 12h3.5M17.5 12H21M5.6 5.6l2.5 2.5M15.9 15.9l2.5 2.5M18.4 5.6l-2.5 2.5M8.1 15.9l-2.5 2.5"/></svg> Opponent Belief</a>
+    <a href="ers.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/><circle cx="12" cy="12" r="10" opacity="0.25"/></svg> ERS & Powertrain</a>
+    <div class="nav-label">Analytics</div>
+    <a href="benchmark.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V10M11 20V4M18 20v-7"/></svg> Performance Lab</a>
+    <div class="nav-label">Library</div>
+    <a href="scenarios.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 3v18M5 4h11l-2 4 2 4H5"/></svg> Scenarios</a>
+    <a href="tracks.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 3c2 3 2 15 0 18M3 12c3-2 15-2 18 0"/></svg> Track Library</a>
+    <div class="nav-label">System</div>
+    <a href="audits.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg> Audit Trail</a>
+    <a href="health.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12h4l2 6 4-14 2 8h6"/></svg> System Health</a>
+    <div class="sidebar-footer"><span class="status-pip"><span class="dot"></span> LIVE</span><span>v1 · Phase 1</span></div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div><h1>System Health</h1></div>
+      <div class="topbar-right"><span class="badge badge-green"><span class="dot"></span> ALL SYSTEMS NOMINAL</span></div>
+    </div>
+
+    <div class="content">
+
+      <div class="grid grid-4 reveal">
+        <div class="glass stat-card"><div class="label">Liveness</div><div class="value" style="font-size:20px;"><span class="badge badge-green"><span class="dot"></span>OK</span></div></div>
+        <div class="glass stat-card"><div class="label">Uptime</div><div class="value">99.98<small>%</small></div></div>
+        <div class="glass stat-card"><div class="label">Requests / min</div><div class="value" id="rpm">—</div></div>
+        <div class="glass stat-card"><div class="label">Fallback rate</div><div class="value">1.4<small>%</small></div></div>
+      </div>
+
+      <div class="grid grid-2 mt-24">
+        <div class="glass panel reveal">
+          <div class="panel-head"><h3>Model Readiness</h3><span class="tag">GET /v1/health/ready</span></div>
+          <table class="data-table">
+            <thead><tr><th>Component</th><th>Mode</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>Overtake classifier</td><td class="mono">trained-v1</td><td><span class="badge badge-green"><span class="dot"></span>LOADED</span></td></tr>
+              <tr><td>Rule engine</td><td class="mono">deterministic</td><td><span class="badge badge-green"><span class="dot"></span>LOADED</span></td></tr>
+              <tr><td>Traffic engine</td><td class="mono">deterministic</td><td><span class="badge badge-green"><span class="dot"></span>LOADED</span></td></tr>
+              <tr><td>Rollout simulator</td><td class="mono">Monte Carlo (n=30)</td><td><span class="badge badge-green"><span class="dot"></span>LOADED</span></td></tr>
+              <tr><td>Policy adapter (PPO)</td><td class="mono">policy_is_available()</td><td><span class="badge badge-green"><span class="dot"></span>LOADED</span></td></tr>
+              <tr><td>Traffic graph (GNN/GAT)</td><td class="mono">battle_graph + traffic_graph</td><td><span class="badge badge-green"><span class="dot"></span>LOADED</span></td></tr>
+              <tr><td>Opponent belief filter</td><td class="mono">temporal HMM-style</td><td><span class="badge badge-green"><span class="dot"></span>LOADED</span></td></tr>
+              <tr><td>Rival pattern model</td><td class="mono">trained-v1</td><td><span class="badge badge-green"><span class="dot"></span>LOADED</span></td></tr>
+              <tr><td>ERS 2026 tactical advisory</td><td class="mono">rules-inspired</td><td><span class="badge badge-green"><span class="dot"></span>LOADED</span></td></tr>
+              <tr><td>Powertrain mode tracker</td><td class="mono">stateful (SoC + tactical)</td><td><span class="badge badge-green"><span class="dot"></span>LOADED</span></td></tr>
+              <tr><td>Quantum-inspired estimator</td><td class="mono">amplitude-encoded MC</td><td><span class="badge badge-green"><span class="dot"></span>LOADED</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="glass panel reveal">
+          <div class="panel-head"><h3>Classifier Evaluation</h3><span class="tag">HOLDOUT TRACKS</span></div>
+          <div class="grid grid-2">
+            <div>
+              <div class="small text-muted mono">TRAIN TRACKS (n=1560)</div>
+              <div class="mt-8"><div class="flex justify-between small"><span>Accuracy</span><b>0.747</b></div><div class="meter mt-8"><i style="width:0%" data-t="74.7"></i></div></div>
+              <div class="mt-16"><div class="flex justify-between small"><span>AUC</span><b>0.765</b></div><div class="meter mt-8"><i style="width:0%" data-t="76.5"></i></div></div>
+            </div>
+            <div>
+              <div class="small text-muted mono">HOLDOUT TRACKS (n=520)</div>
+              <div class="mt-8"><div class="flex justify-between small"><span>Accuracy</span><b style="color:var(--green)">0.790</b></div><div class="meter mt-8"><i style="width:0%; background:var(--green);" data-t="79.0"></i></div></div>
+              <div class="mt-16"><div class="flex justify-between small"><span>AUC</span><b style="color:var(--green)">0.772</b></div><div class="meter mt-8"><i style="width:0%; background:var(--green);" data-t="77.2"></i></div></div>
+            </div>
+          </div>
+          <p class="text-muted small mt-24">Evaluated on 2 tracks never seen during training, per the guide's warning against random-splitting rows from the same track/session. Trained on a synthetic, FastF1-shaped dataset — treat as a working pipeline proof, not a result from real telemetry.</p>
+        </div>
+      </div>
+
+      <div class="glass panel mt-24 reveal">
+        <div class="panel-head"><h3>Latency — FAST vs VERIFIED</h3><span class="tag">ALL 4 CANDIDATE ACTIONS</span></div>
+        <table class="data-table">
+          <thead><tr><th>Mode</th><th>Scenario</th><th>Mean Latency</th><th>P95 Latency</th></tr></thead>
+          <tbody>
+            <tr><td><span class="badge badge-blue"><span class="dot"></span>FAST</span></td><td>isolated_pass</td><td class="mono">4.13ms</td><td class="mono">5.06ms</td></tr>
+            <tr><td><span class="badge badge-blue"><span class="dot"></span>FAST</span></td><td>low_soc_guard</td><td class="mono">3.61ms</td><td class="mono">3.81ms</td></tr>
+            <tr><td><span class="badge badge-blue"><span class="dot"></span>FAST</span></td><td>rear_drs_threat</td><td class="mono">3.67ms</td><td class="mono">3.79ms</td></tr>
+            <tr><td><span class="badge badge-green"><span class="dot"></span>VERIFIED</span></td><td>isolated_pass</td><td class="mono">12.40ms</td><td class="mono">12.73ms</td></tr>
+            <tr><td><span class="badge badge-green"><span class="dot"></span>VERIFIED</span></td><td>low_soc_guard</td><td class="mono">9.02ms</td><td class="mono">9.45ms</td></tr>
+            <tr><td><span class="badge badge-green"><span class="dot"></span>VERIFIED</span></td><td>rear_drs_threat</td><td class="mono">11.79ms</td><td class="mono">12.22ms</td></tr>
+          </tbody>
+        </table>
+        
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script src="assets/app.js"></script>
+<script>
+  countUp(document.getElementById('rpm'), 842, {decimals:0});
+  document.querySelectorAll('.meter i[data-t]').forEach((el,i)=>{
+    setTimeout(()=>{ el.style.width = el.dataset.t + '%'; }, 150 + i*100);
+  });
+</script>
+
+</body>
+</html>

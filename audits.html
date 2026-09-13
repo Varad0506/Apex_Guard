@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ApexGuard — Audit Trail</title>
+<link rel="icon" type="image/png" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/favicon-180.png">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  pre.json-view{
+    background:rgba(0,0,0,0.35); border:1px solid var(--line); border-radius:10px;
+    padding:16px; font-size:12px; line-height:1.6; overflow:auto; max-height:340px;
+    font-family:'JetBrains Mono', monospace; color:#c9e8ff;
+  }
+  pre.json-view .k{ color:#7fd4ff; } pre.json-view .s{ color:#a8e6a1; } pre.json-view .n{ color:#ffb86b; }
+</style>
+</head>
+<body>
+
+<div class="ambient"><div class="grid-lines"></div><div class="scanline"></div></div>
+
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand"><span class="mark"><img src="assets/logo-mark-white.png" alt="ApexGuard logo" class="mark-logo"></span> ApexGuard</div>
+    <div class="nav-label">Live</div>
+    <a href="index.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg> Dashboard</a>
+    <a href="replay.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M10 8.5v7l6-3.5-6-3.5z"/></svg> Race Replay</a>
+    <a href="decide.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg> Decision Engine</a>
+    <a href="simulate.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12h4l2-7 4 14 2-7h6"/></svg> Simulate</a>
+    <a href="beliefs.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3.2"/><path d="M12 3v3.5M12 17.5V21M3 12h3.5M17.5 12H21M5.6 5.6l2.5 2.5M15.9 15.9l2.5 2.5M18.4 5.6l-2.5 2.5M8.1 15.9l-2.5 2.5"/></svg> Opponent Belief</a>
+    <a href="ers.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/><circle cx="12" cy="12" r="10" opacity="0.25"/></svg> ERS & Powertrain</a>
+    <div class="nav-label">Analytics</div>
+    <a href="benchmark.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V10M11 20V4M18 20v-7"/></svg> Performance Lab</a>
+    <div class="nav-label">Library</div>
+    <a href="scenarios.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 3v18M5 4h11l-2 4 2 4H5"/></svg> Scenarios</a>
+    <a href="tracks.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 3c2 3 2 15 0 18M3 12c3-2 15-2 18 0"/></svg> Track Library</a>
+    <div class="nav-label">System</div>
+    <a href="audits.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg> Audit Trail</a>
+    <a href="health.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12h4l2 6 4-14 2 8h6"/></svg> System Health</a>
+    <div class="sidebar-footer"><span class="status-pip"><span class="dot"></span> LIVE</span><span>v1 · Phase 1</span></div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div><h1>Audit Trail</h1></div>
+      <div class="topbar-right"><span class="badge badge-green"><span class="dot"></span> JSONL LOG</span></div>
+    </div>
+
+    <div class="content">
+      <!-- ===== DECISION TIMELINE ===== -->
+      <div class="glass panel reveal">
+        <div class="panel-head"><h3>Decision Timeline</h3><span class="tag">CHRONOLOGICAL · CLICK TO INSPECT</span></div>
+        <div class="decision-timeline" id="decisionTimeline"></div>
+      </div>
+
+      <div class="grid mt-16" style="grid-template-columns:1.1fr 1.4fr; align-items:start;">
+        <div class="glass panel reveal">
+          <div class="panel-head"><h3>Decision Log</h3><span class="tag">MOST RECENT FIRST</span></div>
+          <table class="data-table" id="auditTable">
+            <thead><tr><th>Audit ID</th><th>Action</th><th>Status</th><th>Conf.</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
+        <div class="glass panel reveal" id="auditDetail">
+          <div class="panel-head"><h3 id="auditTitle">audit_0001</h3><span class="badge badge-green" id="auditStatusBadge"><span class="dot"></span> OK</span></div>
+          <p class="text-muted small" id="auditExplain" style="margin-bottom:20px;"></p>
+
+          <div class="panel-head" style="margin-bottom:10px;"><h3 style="font-size:12.5px;">Pipeline Trace</h3></div>
+          <div class="pipeline" id="auditPipeline"></div>
+
+          <div class="panel-head mt-16" style="margin-bottom:10px;"><h3 style="font-size:12.5px;">Raw Response</h3></div>
+          <pre class="json-view" id="auditJson"></pre>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="assets/app.js"></script>
+<script>
+  const stepNames = [
+    'Freshness guard','Legal-action mask','Opportunity gating','Rival estimation',
+    'Traffic risk','Overtake probability','Lookahead rollout','Ranking',
+    'Fail-safe check','Explanation + audit'
+  ];
+
+  const audits = [
+    { id:'audit_a1f9c2', t:'-00:04', action:'PARTIAL_DEPLOY', status:'OK', conf:1.00, badge:'badge-green',
+      explain:'Verifier downgraded full deploy — counterattack risk from rear traffic erased the raw pass-value advantage.',
+      response:{ request_id:'scenario-rear-drs-threat', status:'OK', recommended_action:'PARTIAL_DEPLOY', recommendation_confidence:1.0, overtake_success_probability:1.0, counterattack_risk:0.79, risk_level:'MEDIUM', rule_compliant:true, fallback_used:false, latency_ms:11.79 } },
+    { id:'audit_7be041', t:'-00:22', action:'HOLD', status:'SAFE_HOLD', conf:0.86, badge:'badge-amber',
+      explain:'No candidate cleared the minimum risk-adjusted value bar this tick — fail-safe held position.',
+      response:{ request_id:'scenario-borderline-01', status:'SAFE_HOLD', recommended_action:'HOLD', recommendation_confidence:0.86, overtake_success_probability:0.31, counterattack_risk:0.52, risk_level:'MEDIUM', rule_compliant:true, fallback_used:true, latency_ms:10.44 } },
+    { id:'audit_2d90aa', t:'-00:41', action:'HARVEST', status:'OK', conf:1.00, badge:'badge-green',
+      explain:'Hard reserve constraint made any deploy illegal — harvesting was the highest-value legal action.',
+      response:{ request_id:'scenario-low-soc-guard', status:'OK', recommended_action:'HARVEST', recommendation_confidence:1.0, overtake_success_probability:0.0, counterattack_risk:0.415, risk_level:'LOW', rule_compliant:true, fallback_used:false, latency_ms:9.02 } },
+    { id:'audit_5f13be', t:'-01:03', action:'FULL_DEPLOY', status:'OK', conf:0.91, badge:'badge-green',
+      explain:'High pass value, low downstream risk — aggressive deploy cleared the value bar cleanly.',
+      response:{ request_id:'scenario-isolated-pass', status:'OK', recommended_action:'FULL_DEPLOY', recommendation_confidence:0.91, overtake_success_probability:0.87, counterattack_risk:0.18, risk_level:'LOW', rule_compliant:true, fallback_used:false, latency_ms:12.4 } },
+    { id:'audit_c40912', t:'-01:29', action:'HOLD', status:'DEGRADED', conf:0.68, badge:'badge-red',
+      explain:'Trained overtake classifier artifact failed to load — degraded to heuristic-v0 fallback per the fail-safe contract.',
+      response:{ request_id:'scenario-model-degraded', status:'DEGRADED', recommended_action:'HOLD', recommendation_confidence:0.68, overtake_success_probability:0.44, counterattack_risk:0.61, risk_level:'MEDIUM', rule_compliant:true, fallback_used:true, latency_ms:8.15 } },
+  ];
+
+  function renderTimeline(selectedIdx){
+    const el = document.getElementById('decisionTimeline');
+    el.innerHTML = audits.map((a,i) => `
+      <div class="dt-node ${i===selectedIdx?'active':''}" data-i="${i}">
+        <span class="dt-dot ${a.badge}"></span>
+        <span class="dt-time mono">${a.t}</span>
+        <span class="dt-action">${a.action.replace('_',' ')}</span>
+        <span class="dt-line"></span>
+      </div>`).join('');
+    el.querySelectorAll('.dt-node').forEach(node => {
+      node.addEventListener('click', () => showAudit(+node.dataset.i));
+    });
+  }
+
+  const tbody = document.querySelector('#auditTable tbody');
+  audits.forEach((a, i) => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td class="mono">${a.id}</td><td>${a.action}</td><td><span class="badge ${a.badge}"><span class="dot"></span>${a.status}</span></td><td class="mono">${a.conf.toFixed(2)}</td>`;
+    tr.onclick = () => showAudit(i);
+    tbody.appendChild(tr);
+  });
+
+  function syntaxHighlight(json){
+    let str = JSON.stringify(json, null, 2);
+    str = str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    str = str.replace(/"(\w+)":/g, '<span class="k">"$1"</span>:');
+    str = str.replace(/: "([^"]*)"/g, ': <span class="s">"$1"</span>');
+    str = str.replace(/: (-?\d+\.?\d*)/g, ': <span class="n">$1</span>');
+    return str;
+  }
+
+  function showAudit(i){
+    const a = audits[i];
+    document.getElementById('auditTitle').textContent = a.id;
+    const badge = document.getElementById('auditStatusBadge');
+    badge.className = 'badge ' + a.badge;
+    badge.innerHTML = `<span class="dot"></span> ${a.status}`;
+    document.getElementById('auditExplain').textContent = a.explain;
+    document.getElementById('auditJson').innerHTML = syntaxHighlight(a.response);
+
+    document.getElementById('auditPipeline').innerHTML = stepNames.map((name, idx) => `
+      <div class="pipe-step done">
+        <div class="rail"><div class="node">✓</div><div class="line"></div></div>
+        <div class="body"><h5>${name}</h5><p>Completed · step ${idx+1} of ${stepNames.length}</p></div>
+      </div>`).join('');
+
+    renderTimeline(i);
+    document.querySelectorAll('#auditTable tbody tr').forEach((tr,idx) => tr.classList.toggle('active', idx===i));
+  }
+
+  showAudit(0);
+</script>
+
+</body>
+</html>

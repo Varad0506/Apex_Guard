@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ApexGuard — Performance Lab</title>
+<link rel="icon" type="image/png" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/favicon-180.png">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<div class="ambient"><div class="grid-lines"></div><div class="scanline"></div></div>
+
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand"><span class="mark"><img src="assets/logo-mark-white.png" alt="ApexGuard logo" class="mark-logo"></span> ApexGuard</div>
+    <div class="nav-label">Live</div>
+    <a href="index.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg> Dashboard</a>
+    <a href="replay.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M10 8.5v7l6-3.5-6-3.5z"/></svg> Race Replay</a>
+    <a href="decide.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg> Decision Engine</a>
+    <a href="simulate.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12h4l2-7 4 14 2-7h6"/></svg> Simulate</a>
+    <a href="beliefs.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3.2"/><path d="M12 3v3.5M12 17.5V21M3 12h3.5M17.5 12H21M5.6 5.6l2.5 2.5M15.9 15.9l2.5 2.5M18.4 5.6l-2.5 2.5M8.1 15.9l-2.5 2.5"/></svg> Opponent Belief</a>
+    <a href="ers.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/><circle cx="12" cy="12" r="10" opacity="0.25"/></svg> ERS & Powertrain</a>
+    <div class="nav-label">Analytics</div>
+    <a href="benchmark.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V10M11 20V4M18 20v-7"/></svg> Performance Lab</a>
+    <div class="nav-label">Library</div>
+    <a href="scenarios.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 3v18M5 4h11l-2 4 2 4H5"/></svg> Scenarios</a>
+    <a href="tracks.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 3c2 3 2 15 0 18M3 12c3-2 15-2 18 0"/></svg> Track Library</a>
+    <div class="nav-label">System</div>
+    <a href="audits.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg> Audit Trail</a>
+    <a href="health.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12h4l2 6 4-14 2 8h6"/></svg> System Health</a>
+    <div class="sidebar-footer"><span class="status-pip"><span class="dot"></span> LIVE</span><span>v1 · Phase 1</span></div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div><h1>Performance Lab</h1></div>
+      <div class="topbar-right">
+        <span class="badge badge-blue"><span class="dot"></span> N = 2,000 EPISODES</span>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <!-- ===== Headline metrics ===== -->
+      <div class="glass panel reveal">
+        <div class="panel-head"><h3>Baseline vs. PPO</h3><span class="tag">EVAL SUITE · ALL SCENARIOS</span></div>
+        <table class="data-table bench-table">
+          <thead><tr><th>Metric</th><th>Baseline</th><th>PPO</th><th>Δ</th></tr></thead>
+          <tbody id="benchBody"></tbody>
+        </table>
+        <p class="small text-muted mt-16">
+          PPO's 87.5% overtake-pass rate is the honest figure across the full eval suite — the 94% shown per-scenario above reflects the best-performing subset and is not the headline number.
+        </p>
+      </div>
+
+      <!-- ===== Reserve violations chart ===== -->
+      <div class="grid grid-2 mt-16" style="align-items:start;">
+        <div class="glass panel reveal">
+          <div class="panel-head"><h3>Reserve Violations</h3><span class="tag">LOWER IS BETTER</span></div>
+          <div class="bench-bars">
+            <div class="bench-bar-row">
+              <span class="bb-label">Baseline</span>
+              <div class="bench-bar"><i style="width:90%; background:linear-gradient(90deg,var(--red),#ff6b70);"></i></div>
+              <span class="bb-value mono">18%</span>
+            </div>
+            <div class="bench-bar-row">
+              <span class="bb-label">PPO</span>
+              <div class="bench-bar"><i style="width:30%; background:linear-gradient(90deg,var(--green),#7ef2b0);"></i></div>
+              <span class="bb-value mono">5.5%</span>
+            </div>
+          </div>
+          <p class="small text-muted mt-16">PPO cuts reserve-threshold breaches by roughly 3.3× versus the rule-based baseline.</p>
+        </div>
+
+        <div class="glass panel reveal">
+          <div class="panel-head"><h3>Counterattack Rate</h3><span class="tag">LOWER IS BETTER</span></div>
+          <div class="bench-bars">
+            <div class="bench-bar-row">
+              <span class="bb-label">Baseline</span>
+              <div class="bench-bar"><i style="width:90%; background:linear-gradient(90deg,var(--red),#ff6b70);"></i></div>
+              <span class="bb-value mono">27%</span>
+            </div>
+            <div class="bench-bar-row">
+              <span class="bb-label">PPO</span>
+              <div class="bench-bar"><i style="width:63%; background:linear-gradient(90deg,var(--amber),#ffd166);"></i></div>
+              <span class="bb-value mono">19%</span>
+            </div>
+          </div>
+          <p class="small text-muted mt-16">The verifier's rejection of high-risk FULL_DEPLOY proposals accounts for most of this gap.</p>
+        </div>
+      </div>
+
+      <!-- ===== Regret / Utility ===== -->
+      <div class="glass panel reveal mt-16">
+        <div class="panel-head"><h3>Regret &amp; Utility</h3><span class="tag">PER-EPISODE AVERAGE</span></div>
+        <div class="grid grid-2">
+          <div>
+            <div class="small text-muted mono mb-6">REGRET (lower is better)</div>
+            <div class="bench-bar-row">
+              <span class="bb-label">Baseline</span>
+              <div class="bench-bar"><i style="width:100%; background:linear-gradient(90deg,var(--red),#ff6b70);"></i></div>
+              <span class="bb-value mono">0.31</span>
+            </div>
+            <div class="bench-bar-row">
+              <span class="bb-label">PPO</span>
+              <div class="bench-bar"><i style="width:45%; background:linear-gradient(90deg,var(--green),#7ef2b0);"></i></div>
+              <span class="bb-value mono">0.14</span>
+            </div>
+          </div>
+          <div>
+            <div class="small text-muted mono mb-6">UTILITY (higher is better)</div>
+            <div class="bench-bar-row">
+              <span class="bb-label">Baseline</span>
+              <div class="bench-bar"><i style="width:58%; background:linear-gradient(90deg,var(--blue),#8ec4ff);"></i></div>
+              <span class="bb-value mono">0.11</span>
+            </div>
+            <div class="bench-bar-row">
+              <span class="bb-label">PPO</span>
+              <div class="bench-bar"><i style="width:100%; background:linear-gradient(90deg,var(--green),#7ef2b0);"></i></div>
+              <span class="bb-value mono">0.19</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script src="assets/app.js"></script>
+<script>
+  const rows = [
+    { metric:'Overtake pass rate',   baseline:'91%',    ppo:'94%*',  delta:'+3pt',  good:true },
+    { metric:'Eval-suite pass rate', baseline:'79%',    ppo:'87.5%', delta:'+8.5pt', good:true },
+    { metric:'Reserve violations',   baseline:'18%',    ppo:'5.5%',  delta:'−12.5pt', good:true },
+    { metric:'Energy per pass',      baseline:'312 kJ', ppo:'281 kJ', delta:'−31 kJ', good:true },
+    { metric:'Counterattack rate',   baseline:'27%',    ppo:'19%',   delta:'−8pt',  good:true },
+    { metric:'Regret',               baseline:'0.31',   ppo:'0.14',  delta:'−0.17', good:true },
+    { metric:'Utility',              baseline:'0.11',   ppo:'0.19',  delta:'+0.08', good:true },
+  ];
+  document.getElementById('benchBody').innerHTML = rows.map(r => `
+    <tr>
+      <td>${r.metric}</td>
+      <td class="mono text-muted">${r.baseline}</td>
+      <td class="mono"><b>${r.ppo}</b></td>
+      <td class="mono" style="color:${r.good ? 'var(--green)' : 'var(--red)'}">${r.delta}</td>
+    </tr>`).join('');
+</script>
+</body>
+</html>

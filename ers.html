@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ApexGuard — ERS &amp; Powertrain</title>
+<link rel="icon" type="image/png" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/favicon-180.png">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .ers-action-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
+  @media (max-width:900px){ .ers-action-grid{ grid-template-columns:repeat(2,1fr); } }
+  .ers-card{ padding:16px; border-radius:12px; background:rgba(255,255,255,0.02); border:1px solid var(--line); }
+  .ers-card h4{ margin:0 0 6px; font-size:14px; }
+  .ers-card .avail{ font-size:11px; text-transform:uppercase; letter-spacing:0.4px; margin-bottom:8px; }
+  .ers-card p{ margin:0; font-size:12.5px; color:var(--muted); line-height:1.5; }
+  .ers-kv{ display:flex; justify-content:space-between; font-size:11.5px; margin-top:8px; color:var(--muted); }
+  .qi-row{ display:grid; grid-template-columns:140px 1fr 70px 70px; align-items:center; gap:10px; margin-bottom:10px; }
+  .qi-row .amp-bar{ height:8px; border-radius:4px; background:rgba(255,255,255,0.06); overflow:hidden; }
+  .qi-row .amp-bar i{ display:block; height:100%; border-radius:4px; }
+</style>
+</head>
+<body>
+
+<div class="ambient"><div class="grid-lines"></div><div class="scanline"></div></div>
+
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand"><span class="mark"><img src="assets/logo-mark-white.png" alt="ApexGuard logo" class="mark-logo"></span> ApexGuard</div>
+    <div class="nav-label">Live</div>
+    <a href="index.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg> Dashboard</a>
+    <a href="replay.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M10 8.5v7l6-3.5-6-3.5z"/></svg> Race Replay</a>
+    <a href="decide.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg> Decision Engine</a>
+    <a href="simulate.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12h4l2-7 4 14 2-7h6"/></svg> Simulate</a>
+    <a href="beliefs.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3.2"/><path d="M12 3v3.5M12 17.5V21M3 12h3.5M17.5 12H21M5.6 5.6l2.5 2.5M15.9 15.9l2.5 2.5M18.4 5.6l-2.5 2.5M8.1 15.9l-2.5 2.5"/></svg> Opponent Belief</a>
+    <a href="ers.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/><circle cx="12" cy="12" r="10" opacity="0.25"/></svg> ERS &amp; Powertrain</a>
+    <div class="nav-label">Analytics</div>
+    <a href="benchmark.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V10M11 20V4M18 20v-7"/></svg> Performance Lab</a>
+    <div class="nav-label">Library</div>
+    <a href="scenarios.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 3v18M5 4h11l-2 4 2 4H5"/></svg> Scenarios</a>
+    <a href="tracks.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 3c2 3 2 15 0 18M3 12c3-2 15-2 18 0"/></svg> Track Library</a>
+    <div class="nav-label">System</div>
+    <a href="audits.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg> Audit Trail</a>
+    <a href="health.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12h4l2 6 4-14 2 8h6"/></svg> System Health</a>
+    <div class="sidebar-footer"><span class="status-pip"><span class="dot"></span> LIVE</span><span>v1 · Phase 1</span></div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div><h1>ERS &amp; Powertrain</h1></div>
+      <div class="topbar-right"><span class="badge badge-blue"><span class="dot"></span> POST /v1/ers/tactical</span></div>
+    </div>
+
+    <div class="content">
+
+      <!-- ===== INPUT ===== -->
+      <div class="glass panel reveal">
+        <div class="panel-head"><h3>Ego / Track State</h3><span class="tag">ADVISORY INPUT</span></div>
+        <div class="grid grid-4">
+          <div class="field">
+            <label>Ego SOC <b id="lblErsSoc">46%</b></label>
+            <input type="range" id="ersSoc" min="0" max="100" value="46">
+          </div>
+          <div class="field">
+            <label>Speed (kph) <b id="lblErsSpeed">286</b></label>
+            <input type="range" id="ersSpeed" min="0" max="360" value="286">
+          </div>
+          <div class="field">
+            <label>Deployment budget <b id="lblErsBudget">1800 kJ</b></label>
+            <input type="range" id="ersBudget" min="0" max="2000" value="1800">
+          </div>
+          <div class="field">
+            <label>Min reserve SOC <b id="lblErsReserve">15%</b></label>
+            <input type="range" id="ersReserve" min="0" max="40" value="15">
+          </div>
+        </div>
+        <div class="grid grid-4 mt-8">
+          <div class="field">
+            <label>Gap to target (s) <b id="lblErsGap">0.55</b></label>
+            <input type="range" id="ersGap" min="0" max="300" value="55">
+          </div>
+          <div class="field">
+            <label>Telemetry age (ms) <b id="lblErsAge">40</b></label>
+            <input type="range" id="ersAge" min="0" max="1200" value="40">
+          </div>
+        </div>
+        <div class="chip-row mt-16">
+          <label class="chip"><input type="checkbox" id="ersDetect" style="margin-right:6px;">Detection point active</label>
+          <label class="chip"><input type="checkbox" id="ersOvtMode" style="margin-right:6px;">Overtake Mode armed (track)</label>
+          <label class="chip"><input type="checkbox" id="ersKeyZone" style="margin-right:6px;">Key acceleration zone (350kW)</label>
+        </div>
+        <p class="small text-muted mt-16">Simulated locally in your browser, mirroring <span class="mono">app/engine/ers_2026.py</span> exactly — no backend call is made.</p>
+      </div>
+
+      <!-- ===== ERS TACTICAL ACTIONS ===== -->
+      <div class="glass panel mt-24 reveal">
+        <div class="panel-head"><h3>ERS Tactical Advisory</h3><span class="tag">HOLD · RECHARGE · BOOST · OVERTAKE</span></div>
+        <div class="ers-action-grid" id="ersGrid"></div>
+        <p class="small text-muted mt-16">Advisory only — decision eligibility, not direct vehicle control. Regulation basis: 2026 F1 ERS terminology/rule-inspired advisory model; verify against the latest FIA Sporting/Technical Regulations before race deployment.</p>
+      </div>
+
+      <!-- ===== POWERTRAIN MODE ===== -->
+      <div class="glass panel mt-24 reveal">
+        <div class="panel-head"><h3>Powertrain Mode Classifier</h3><span class="tag">app/simulation/powertrain_modes.py</span></div>
+        <div class="grid grid-2">
+          <div>
+            <div class="field">
+              <label>Throttle % <b id="lblPtThrottle">60</b></label>
+              <input type="range" id="ptThrottle" min="0" max="100" value="60">
+            </div>
+            <div class="field">
+              <label>Brake % <b id="lblPtBrake">0</b></label>
+              <input type="range" id="ptBrake" min="0" max="100" value="0">
+            </div>
+            <div class="field" style="margin-bottom:0;">
+              <label>Candidate action</label>
+              <select id="ptAction">
+                <option>HOLD</option><option>HARVEST</option>
+                <option selected>PARTIAL_DEPLOY</option><option>FULL_DEPLOY</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <div class="grid grid-2">
+              <div><div class="small text-muted mono">POWERTRAIN MODE</div><div style="font-size:19px; font-weight:700;" id="ptMode">—</div></div>
+              <div><div class="small text-muted mono">TACTICAL MODE</div><div style="font-size:19px; font-weight:700;" id="ptTactical">—</div></div>
+              <div><div class="small text-muted mono">DEPLOY RATE ×</div><div style="font-size:19px; font-weight:700;" id="ptDeployMul">—</div></div>
+              <div><div class="small text-muted mono">HARVEST RATE ×</div><div style="font-size:19px; font-weight:700;" id="ptHarvestMul">—</div></div>
+            </div>
+            <p class="small text-muted mt-16" id="ptNote">Adjust SOC (above) and throttle/brake to see the powertrain classify itself into HIGH/MEDIUM/LOW_HARVEST/LOW_DERATE with a NORMAL/LIFT_AND_COAST/SUPER_CLIPPING/OVERRIDE_BOOST tactical sub-mode.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== QUANTUM-INSPIRED ESTIMATOR ===== -->
+      <div class="glass panel mt-24 reveal">
+        <div class="panel-head"><h3>Quantum-Inspired Estimator</h3><span class="tag">POST /v1/simulate/quantum-inspired</span></div>
+        <p class="small text-muted">Not a quantum computer implementation — this is the actual classical Monte Carlo path distribution from the rollout above, re-expressed as amplitude-like weights (α = √p). No quantum hardware or QAE speedup is claimed.</p>
+        <div class="mt-16" id="qiRows"></div>
+        <div class="grid grid-3 mt-16">
+          <div><div class="small text-muted mono">SAMPLE COUNT</div><div style="font-size:19px; font-weight:700;" id="qiN">—</div></div>
+          <div><div class="small text-muted mono">EXPECTED UTILITY</div><div style="font-size:19px; font-weight:700;" id="qiUtil">—</div></div>
+          <div><div class="small text-muted mono">ESTIMATOR</div><div style="font-size:13px; font-weight:700;" id="qiEstimator">CLASSICAL_MC_WITH_AMPLITUDE_INSPIRED_ENCODING</div></div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script src="assets/app.js"></script>
+<script>
+  // ---------- ERS 2026 tactical advisory (mirrors app/engine/ers_2026.py) ----------
+  const MAX_ERS_KW = 350.0, RACE_BOOST_EXTRA_KW = 150.0;
+  const KEY_ZONE_ERS_KW = 350.0, OTHER_ZONE_ERS_KW = 250.0;
+  const OVERTAKE_DETECTION_GAP_S = 1.0, EXTRA_OVERTAKE_ENERGY_MJ = 0.5;
+
+  function normalErsPowerLimitKw(speedKph, keyZone){
+    const speed = Math.max(0, speedKph);
+    let speedCap;
+    if (speed >= 345) speedCap = 0;
+    else if (speed >= 340) speedCap = 6900 - 20*speed;
+    else speedCap = 1800 - 5*speed;
+    const zoneCap = keyZone ? KEY_ZONE_ERS_KW : OTHER_ZONE_ERS_KW;
+    return Math.round(Math.max(0, Math.min(MAX_ERS_KW, zoneCap, speedCap)) * 10) / 10;
+  }
+
+  function assessErs(action, s){
+    const headroom = Math.max(0, s.soc - s.reserve);
+    const fresh = s.age <= 500;
+    const power = normalErsPowerLimitKw(s.speed, s.keyZone);
+    const base = { action, maxPower: power, boostExtra: 0, overtakeArmed: s.ovtMode, detectionEligible: false, extraEnergyMj: 0, headroom };
+
+    if (action === 'HOLD') return { ...base, available:true, reason:'No ERS deployment requested.' };
+    if (!fresh) return { ...base, available:false, reason:'Telemetry is stale; aggressive ERS advice is blocked.' };
+
+    if (action === 'RECHARGE'){
+      const ok = s.soc < 99.5;
+      return { ...base, available: ok, reason: ok ? 'Recharge strategy available; actual harvesting depends on track/engine map.' : 'Energy store is effectively full.' };
+    }
+    if (action === 'BOOST'){
+      const ok = headroom > 0 && s.budget > 0 && power > 0;
+      return { ...base, available: ok, boostExtra: ok ? RACE_BOOST_EXTRA_KW : 0,
+        reason: ok ? 'Boost advisory is feasible with available charge and ERS power.' : 'Insufficient reserve headroom, budget, or permitted ERS power.' };
+    }
+    // OVERTAKE
+    const eligible = s.detect && s.gap <= OVERTAKE_DETECTION_GAP_S;
+    const available = (s.ovtMode || eligible) && headroom > 0 && power > 0;
+    let reason;
+    if (available) reason = 'Overtake Mode advisory is available/armed under the supplied detection state.';
+    else if (!eligible && !s.ovtMode) reason = 'Overtake Mode is not armed: the supplied state is not within the one-second detection condition.';
+    else reason = 'Overtake Mode blocked by energy or ERS constraints.';
+    return { ...base, available, detectionEligible: eligible, overtakeArmed: !!s.ovtMode,
+      boostExtra: available ? RACE_BOOST_EXTRA_KW : 0, extraEnergyMj: available ? EXTRA_OVERTAKE_ENERGY_MJ : 0, reason };
+  }
+
+  const ersEls = {
+    soc: document.getElementById('ersSoc'), speed: document.getElementById('ersSpeed'),
+    budget: document.getElementById('ersBudget'), reserve: document.getElementById('ersReserve'),
+    gap: document.getElementById('ersGap'), age: document.getElementById('ersAge'),
+    detect: document.getElementById('ersDetect'), ovtMode: document.getElementById('ersOvtMode'), keyZone: document.getElementById('ersKeyZone'),
+  };
+
+  function ersState(){
+    return {
+      soc: +ersEls.soc.value, speed: +ersEls.speed.value, budget: +ersEls.budget.value,
+      reserve: +ersEls.reserve.value, gap: +ersEls.gap.value/100, age: +ersEls.age.value,
+      detect: ersEls.detect.checked, ovtMode: ersEls.ovtMode.checked, keyZone: ersEls.keyZone.checked,
+    };
+  }
+
+  function renderErs(){
+    document.getElementById('lblErsSoc').textContent = ersEls.soc.value + '%';
+    document.getElementById('lblErsSpeed').textContent = ersEls.speed.value;
+    document.getElementById('lblErsBudget').textContent = ersEls.budget.value + ' kJ';
+    document.getElementById('lblErsReserve').textContent = ersEls.reserve.value + '%';
+    document.getElementById('lblErsGap').textContent = (ersEls.gap.value/100).toFixed(2);
+    document.getElementById('lblErsAge').textContent = ersEls.age.value;
+
+    const s = ersState();
+    const actions = ['HOLD','RECHARGE','BOOST','OVERTAKE'];
+    const grid = document.getElementById('ersGrid');
+    grid.innerHTML = actions.map(a => {
+      const r = assessErs(a, s);
+      const color = r.available ? 'var(--green)' : 'var(--red)';
+      return `<div class="ers-card">
+        <h4>${a}</h4>
+        <div class="avail" style="color:${color}">${r.available ? '● AVAILABLE' : '● BLOCKED'}</div>
+        <p>${r.reason}</p>
+        <div class="ers-kv"><span>Max ERS power</span><b>${r.maxPower.toFixed(1)} kW</b></div>
+        <div class="ers-kv"><span>Boost extra</span><b>${r.boostExtra.toFixed(0)} kW</b></div>
+        ${a==='OVERTAKE' ? `<div class="ers-kv"><span>Detection eligible</span><b>${r.detectionEligible ? 'YES' : 'no'}</b></div>` : ''}
+        <div class="ers-kv"><span>Reserve headroom</span><b>${r.headroom.toFixed(1)}%</b></div>
+      </div>`;
+    }).join('');
+    runQuantumInspired();
+  }
+  Object.values(ersEls).forEach(el => el.addEventListener('input', renderErs));
+  renderErs();
+
+  // ---------- Powertrain mode classifier (mirrors powertrain_modes.py) ----------
+  const HIGH_T = 65.0, MEDIUM_T = 30.0, LOW_HARVEST_T = 15.0;
+  function classifyPowertrainMode(soc, reserve){
+    if (soc <= reserve) return 'LOW_DERATE';
+    if (soc < LOW_HARVEST_T + reserve) return 'LOW_HARVEST';
+    if (soc < HIGH_T) return 'MEDIUM';
+    return 'HIGH';
+  }
+  function classifyTacticalMode(throttle, brake, action, ptMode){
+    if (throttle < 5 && brake < 5) return 'LIFT_AND_COAST';
+    if (action === 'FULL_DEPLOY' && throttle >= 98) return 'OVERRIDE_BOOST';
+    if (throttle >= 98 && ptMode === 'HIGH' && (action === 'HOLD' || action === 'HARVEST')) return 'SUPER_CLIPPING';
+    return 'NORMAL';
+  }
+  const RATE_TABLE = {
+    'HIGH|NORMAL':[1.0,1.0], 'HIGH|SUPER_CLIPPING':[0.15,1.6], 'HIGH|LIFT_AND_COAST':[0.0,1.3], 'HIGH|OVERRIDE_BOOST':[1.0,1.0],
+    'MEDIUM|NORMAL':[1.0,1.0], 'MEDIUM|LIFT_AND_COAST':[0.0,1.25], 'MEDIUM|OVERRIDE_BOOST':[1.45,0.9], 'MEDIUM|SUPER_CLIPPING':[1.0,1.0],
+    'LOW_HARVEST|NORMAL':[0.75,1.15], 'LOW_HARVEST|LIFT_AND_COAST':[0.0,1.4], 'LOW_HARVEST|OVERRIDE_BOOST':[1.2,0.7], 'LOW_HARVEST|SUPER_CLIPPING':[0.75,1.15],
+    'LOW_DERATE|NORMAL':[0.0,1.0], 'LOW_DERATE|LIFT_AND_COAST':[0.0,1.2], 'LOW_DERATE|OVERRIDE_BOOST':[0.0,1.0], 'LOW_DERATE|SUPER_CLIPPING':[0.0,1.0],
+  };
+
+  function renderPowertrain(){
+    document.getElementById('lblPtThrottle').textContent = document.getElementById('ptThrottle').value;
+    document.getElementById('lblPtBrake').textContent = document.getElementById('ptBrake').value;
+    const soc = +ersEls.soc.value, reserve = +ersEls.reserve.value;
+    const throttle = +document.getElementById('ptThrottle').value;
+    const brake = +document.getElementById('ptBrake').value;
+    const action = document.getElementById('ptAction').value;
+
+    const mode = classifyPowertrainMode(soc, reserve);
+    const tactical = classifyTacticalMode(throttle, brake, action, mode);
+    const [deployMul, harvestMul] = RATE_TABLE[`${mode}|${tactical}`];
+
+    document.getElementById('ptMode').textContent = mode;
+    document.getElementById('ptTactical').textContent = tactical;
+    document.getElementById('ptDeployMul').textContent = deployMul.toFixed(2) + '×';
+    document.getElementById('ptHarvestMul').textContent = harvestMul.toFixed(2) + '×';
+
+    const notes = {
+      LOW_DERATE: 'At/below the rules-supplied reserve floor — a hard physical ceiling, not a choice: deploy is zeroed regardless of tactical mode.',
+      LOW_HARVEST: 'Below the harvest threshold but above the hard floor — the system biases toward conserving even in NORMAL tactical mode.',
+      MEDIUM: 'Normal operating range — full rate multipliers apply outside special tactical modes.',
+      HIGH: 'Plenty of charge — SUPER_CLIPPING redirects most "deploy" intent to harvest since the battery is near ceiling.',
+    };
+    document.getElementById('ptNote').textContent = notes[mode];
+  }
+  ['ptThrottle','ptBrake','ptAction'].forEach(id => document.getElementById(id).addEventListener('input', renderPowertrain));
+  ersEls.soc.addEventListener('input', renderPowertrain);
+  ersEls.reserve.addEventListener('input', renderPowertrain);
+  renderPowertrain();
+
+  // ---------- Quantum-inspired estimator (mirrors app/simulation/quantum_inspired.py) ----------
+  function seededRandom(seed){
+    let s = seed; return () => { s = (s * 1103515245 + 12345) & 0x7fffffff; return s / 0x7fffffff; };
+  }
+  function amplitude(p){ return Math.round(Math.sqrt(Math.max(0, Math.min(1, p))) * 1e6) / 1e6; }
+
+  function runQuantumInspired(){
+    const s = ersState();
+    const rand = seededRandom(Math.round(s.soc*37 + s.speed*11 + s.budget + 7));
+    const n = 60;
+    let passN=0, counterN=0, breachN=0, utilSum=0;
+    for (let i=0;i<n;i++){
+      const passed = rand() < Math.max(0.05, 1 - s.gap*0.6);
+      const counter = rand() < 0.25;
+      const breach = rand() < Math.max(0.01, (100-s.soc)/500);
+      if (passed) passN++; if (counter) counterN++; if (breach) breachN++;
+      utilSum += (passed?1:0)*1.4 - (counter?0.9:0) - (breach?0.6:0);
+    }
+    const successP = passN/n, counterP = counterN/n, breachP = breachN/n, util = utilSum/n;
+
+    const rows = [
+      { label:'Success', p:successP, color:'var(--green)' },
+      { label:'Counterattack', p:counterP, color:'var(--amber)' },
+      { label:'Reserve breach', p:breachP, color:'var(--red)' },
+    ];
+    document.getElementById('qiRows').innerHTML = rows.map(r => `
+      <div class="qi-row">
+        <span class="small text-muted">${r.label}</span>
+        <div class="amp-bar"><i style="width:${(r.p*100).toFixed(1)}%; background:${r.color};"></i></div>
+        <span class="mono small">p=${r.p.toFixed(2)}</span>
+        <span class="mono small">α=${amplitude(r.p).toFixed(3)}</span>
+      </div>`).join('');
+    document.getElementById('qiN').textContent = n;
+    document.getElementById('qiUtil').textContent = util.toFixed(3);
+  }
+  renderPowertrain();
+</script>
+
+</body>
+</html>

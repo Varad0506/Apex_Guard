@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ApexGuard — Scenarios</title>
+<link rel="icon" type="image/png" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/favicon-180.png">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<div class="ambient"><div class="grid-lines"></div><div class="scanline"></div></div>
+
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand"><span class="mark"><img src="assets/logo-mark-white.png" alt="ApexGuard logo" class="mark-logo"></span> ApexGuard</div>
+    <div class="nav-label">Live</div>
+    <a href="index.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg> Dashboard</a>
+    <a href="replay.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M10 8.5v7l6-3.5-6-3.5z"/></svg> Race Replay</a>
+    <a href="decide.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg> Decision Engine</a>
+    <a href="simulate.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12h4l2-7 4 14 2-7h6"/></svg> Simulate</a>
+    <a href="beliefs.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3.2"/><path d="M12 3v3.5M12 17.5V21M3 12h3.5M17.5 12H21M5.6 5.6l2.5 2.5M15.9 15.9l2.5 2.5M18.4 5.6l-2.5 2.5M8.1 15.9l-2.5 2.5"/></svg> Opponent Belief</a>
+    <a href="ers.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/><circle cx="12" cy="12" r="10" opacity="0.25"/></svg> ERS & Powertrain</a>
+    <div class="nav-label">Analytics</div>
+    <a href="benchmark.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V10M11 20V4M18 20v-7"/></svg> Performance Lab</a>
+    <div class="nav-label">Library</div>
+    <a href="scenarios.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 3v18M5 4h11l-2 4 2 4H5"/></svg> Scenarios</a>
+    <a href="tracks.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 3c2 3 2 15 0 18M3 12c3-2 15-2 18 0"/></svg> Track Library</a>
+    <div class="nav-label">System</div>
+    <a href="audits.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg> Audit Trail</a>
+    <a href="health.html" class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12h4l2 6 4-14 2 8h6"/></svg> System Health</a>
+    <div class="sidebar-footer"><span class="status-pip"><span class="dot"></span> LIVE</span><span>v1 · Phase 1</span></div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div><h1>Curated Scenarios</h1></div>
+      <div class="topbar-right"><span class="badge badge-blue"><span class="dot"></span> 3 LOADED</span></div>
+    </div>
+
+    <div class="content">
+      <div class="grid grid-3" id="scenarioGrid"></div>
+
+      <div class="glass panel mt-24" id="detailPanel" style="display:none;">
+        <div class="panel-head">
+          <h3 id="detailTitle">Scenario</h3>
+          <div class="flex gap-12">
+            <span class="badge badge-green" id="detailExpected"><span class="dot"></span> —</span>
+            <a href="decide.html" class="btn btn-sm btn-primary">Open in Decision Engine →</a>
+          </div>
+        </div>
+        <div class="grid grid-2">
+          <div>
+            <div class="panel-head" style="margin-bottom:10px;"><h3 style="font-size:12.5px;">EGO</h3></div>
+            <table class="data-table" id="egoTable"></table>
+          </div>
+          <div>
+            <div class="panel-head" style="margin-bottom:10px;"><h3 style="font-size:12.5px;">TARGET / TRAFFIC / TRACK</h3></div>
+            <table class="data-table" id="otherTable"></table>
+          </div>
+        </div>
+        <div class="mt-16">
+          <div class="panel-head" style="margin-bottom:8px;"><h3 style="font-size:12.5px;">What this demonstrates</h3></div>
+          <p class="text-muted small" id="detailNote"></p>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="assets/app.js"></script>
+<script>
+  const scenarioData = {
+    isolated_pass: {
+      title: 'Isolated Pass', expected: 'FULL_DEPLOY', badge:'badge-green',
+      note: 'High pass value, low downstream risk → aggressive deploy is correct.',
+      ego: { soc_pct:62, speed_kph:288, throttle_pct:98, brake_pct:0, tyre_grip_estimate:0.82, laps_remaining:12 },
+      target: { gap_s:0.45, relative_speed_kph:16, stint_age_laps:20, recent_sector_delta_s:-0.25 },
+      traffic: { rear_gap_s:2.4, cars_within_3s:1, post_pass_traffic_gap_s:2.1 },
+      track: { track_id:'demo_high_speed_01', segment_type:'DRS_STRAIGHT', drs_available:true, overtake_difficulty:0.40 },
+      rules: { deployment_budget_remaining_kj:1900, minimum_reserve_soc_pct:15 },
+    },
+    rear_drs_threat: {
+      title: 'Rear DRS Threat', expected: 'PARTIAL_DEPLOY', badge:'badge-amber',
+      note: 'Verifier downgrades the aggressive option because counterattack risk is high — even though full deploy has the highest raw pass probability.',
+      ego: { soc_pct:46, speed_kph:286, throttle_pct:98, brake_pct:0, tyre_grip_estimate:0.78, laps_remaining:10 },
+      target: { gap_s:0.55, relative_speed_kph:12, stint_age_laps:14, recent_sector_delta_s:-0.18 },
+      traffic: { rear_gap_s:0.40, cars_within_3s:4, post_pass_traffic_gap_s:0.90 },
+      track: { track_id:'demo_high_speed_01', segment_type:'DRS_STRAIGHT', drs_available:true, overtake_difficulty:0.65 },
+      rules: { deployment_budget_remaining_kj:1800, minimum_reserve_soc_pct:15 },
+    },
+    low_soc_guard: {
+      title: 'Low SOC Guard', expected: 'HOLD', badge:'badge-red',
+      note: 'Hard reserve constraint makes any deploy illegal, regardless of opportunity.',
+      ego: { soc_pct:19, speed_kph:279, throttle_pct:95, brake_pct:0, tyre_grip_estimate:0.70, laps_remaining:6 },
+      target: { gap_s:0.50, relative_speed_kph:14, stint_age_laps:10, recent_sector_delta_s:-0.10 },
+      traffic: { rear_gap_s:1.2, cars_within_3s:2, post_pass_traffic_gap_s:1.5 },
+      track: { track_id:'demo_high_speed_01', segment_type:'DRS_STRAIGHT', drs_available:true, overtake_difficulty:0.55 },
+      rules: { deployment_budget_remaining_kj:900, minimum_reserve_soc_pct:15 },
+    },
+  };
+
+  const grid = document.getElementById('scenarioGrid');
+  Object.entries(scenarioData).forEach(([key, s]) => {
+    const card = document.createElement('div');
+    card.className = 'glass card hoverable reveal';
+    card.innerHTML = `
+      <h4>${s.title}</h4>
+      <p>SOC ${s.ego.soc_pct}% · gap ${s.target.gap_s}s · difficulty ${s.track.overtake_difficulty}</p>
+      <div class="card-foot">
+        <span class="badge ${s.badge}"><span class="dot"></span> ${s.expected}</span>
+        <span class="small text-muted">View details →</span>
+      </div>`;
+    card.onclick = () => showDetail(key);
+    grid.appendChild(card);
+  });
+
+  function row(k,v){ return `<tr><td class="mono text-muted">${k}</td><td class="mono">${v}</td></tr>`; }
+
+  function showDetail(key){
+    const s = scenarioData[key];
+    document.getElementById('detailPanel').style.display = 'block';
+    document.getElementById('detailTitle').textContent = s.title;
+    const badge = document.getElementById('detailExpected');
+    badge.className = 'badge ' + s.badge;
+    badge.innerHTML = `<span class="dot"></span> Expected: ${s.expected}`;
+    document.getElementById('detailNote').textContent = s.note;
+
+    document.getElementById('egoTable').innerHTML = Object.entries(s.ego).map(([k,v])=>row(k,v)).join('');
+    const other = {...s.target, ...s.traffic, ...s.track, ...s.rules};
+    document.getElementById('otherTable').innerHTML = Object.entries(other).map(([k,v])=>row(k,v)).join('');
+    document.getElementById('detailPanel').scrollIntoView({behavior:'smooth', block:'nearest'});
+  }
+
+  showDetail('rear_drs_threat');
+</script>
+
+</body>
+</html>
